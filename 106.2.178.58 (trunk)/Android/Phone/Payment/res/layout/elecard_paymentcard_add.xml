@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_main">
+    
+     <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_top_bg"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp" >
+
+        <Button
+            android:id="@+id/btn_eleBindNew_back"
+            android:layout_width="55dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/top_bt_bg" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="32dp"
+            android:src="@drawable/gb_button" />
+
+        <TextView
+            android:id="@+id/eleBindNew_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:shadowColor="#99ffffff"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="添加新卡"
+            android:textColor="#654c0d"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    
+    <ListView 
+        android:id="@+id/elecard_payAdd_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:cacheColorHint="#00000000" >
+    </ListView>
+
+</LinearLayout>

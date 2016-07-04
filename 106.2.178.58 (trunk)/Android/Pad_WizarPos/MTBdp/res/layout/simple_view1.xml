@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/simple" >
+
+    <TextView
+        android:id="@+id/bindedcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="是发的萨芬"
+        android:contentDescription="bname" />
+    <TextView
+        android:id="@+id/cardnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="而且发的身份"
+        android:contentDescription="price" />
+
+    <Button
+        android:id="@+id/bindsubmitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bindedcard"
+        android:layout_marginTop="130dp"
+        android:text="范德萨"
+        android:contentDescription="flag"/>
+        <!-- android:onClick="clickHandler"
+        android:text="@string/click"  -->
+         
+
+</LinearLayout>

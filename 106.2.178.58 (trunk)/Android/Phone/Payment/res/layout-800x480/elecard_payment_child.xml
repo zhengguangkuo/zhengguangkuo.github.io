@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8b867a"
+    android:orientation="vertical" >
+    
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/main_top_bg"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="-4dp" >
+
+        <Button
+            android:id="@+id/btn_elePay_back_child"
+            android:layout_width="55dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/top_bt_bg" 
+            />
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="32dp"
+            android:src="@drawable/gb_button" />
+
+         <TextView
+             android:id="@+id/discount_title_child"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_centerVertical="true"
+             android:text="折扣优惠 "
+             android:textStyle="bold"
+             android:textColor="#654c0d"
+             android:textSize="22sp" 
+             android:shadowColor="#99ffffff"
+    		 android:shadowDx="0"
+   			 android:shadowDy="2"
+   			 android:shadowRadius="1"/>   
+         
+          <ImageButton
+            android:id="@+id/discount_img_child"
+            android:layout_width="32dp"
+            android:layout_height="34dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/menu" 
+            android:background="@drawable/map_text_selector"/>
+          
+          <ImageButton
+            android:id="@+id/discount_img_sousuo_child"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@id/discount_img_child"
+            android:src="@drawable/seek" 
+            android:background="@drawable/map_text_selector"/>
+        <ImageView
+            android:id="@+id/tv_search_map"
+            android:layout_width="32dp"
+            android:layout_height="34dp"
+            android:layout_marginRight="2dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/discount_img_sousuo_child"
+            android:background="@drawable/map_text_selector"
+            android:src="@drawable/location_map" />
+
+ </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TabHost
+            android:id="@android:id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2.95dp" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-13dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2.95dp" >
+                </TabWidget>
+                
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/leather_bg" />
+            </LinearLayout>
+        </TabHost>
+
+        <LinearLayout
+            android:id="@+id/listlayout_tanchu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/choose_eara_item_press_color"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:src="@drawable/choosear_line_img" />
+
+            <com.mt.app.payment.view.ExpandTabView
+                android:id="@+id/expandtab_view1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1.0"
+                android:text="@string/hello_world" />
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:src="@drawable/choosear_line_img" />
+
+            <com.mt.app.payment.view.ExpandTabView
+                android:id="@+id/expandtab_view2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1.0"
+                android:text="@string/hello_world" />
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:src="@drawable/choosear_line_img" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sousuo_top_linear"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="-2dp"
+            android:background="#ffcccccc"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/sousuo_top_edit"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1.0"
+                android:hint="请输入您要搜索的商家"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:background="@drawable/input_dropdown_list_bg" />
+
+            <TextView
+                android:id="@+id/sousuo_top_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/map_text_selector"
+                android:text="搜索"
+                android:textSize="16sp"
+                android:textColor="#ff000000" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

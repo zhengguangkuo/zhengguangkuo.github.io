@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:background="#eeebe4" >
+
+   <RelativeLayout android:background="@color/top_orange" android:id="@+id/head_top_st" android:layout_width="fill_parent" android:layout_height="60dip">
+        <TextView android:textSize="20sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@+id/g_head_top_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="设置" android:singleLine="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <Button android:textColor="@color/white" android:id="@+id/g_head_top_but" android:background="#BFC8CC" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+<ImageButton
+            android:id="@+id/settingbackbtn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/tou"
+            android:src="@drawable/pressed" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/settingbackbtn"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:src="@drawable/top_border" />
+        </RelativeLayout>
+
+    <ScrollView android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_below="@id/head_top_st">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_y"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/rl_qr"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15.0dip" >
+
+                    <Button
+                        android:id="@+id/tv_set1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:background="@color/tou"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:minHeight="20dp"
+                        android:text="密码设置"
+                        android:gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="18.0dip" />
+
+                    <ImageView android:id="@+id/iv_arror_set1" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@+id/iv_line_set" android:background="@drawable/line_1" android:focusable="false" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/tv_set1" />
+                </RelativeLayout>
+                
+                
+                
+                
+                <RelativeLayout android:id="@+id/rl_set" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                    <Button
+                        android:id="@+id/tv_set"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:background="@color/tou"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:minHeight="20dip"
+                        android:text="基卡设置"
+                        android:gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="18.0dip" />
+
+                    <ImageView android:id="@+id/iv_arror_set" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@+id/iv_line_set" android:background="@drawable/line_1" android:focusable="false" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/tv_set" />
+
+                </RelativeLayout>
+                
+                
+                <RelativeLayout android:id="@+id/rl_mysay" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                    <Button
+                        android:id="@+id/tv_mysay"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:background="@color/tou"
+                        android:focusable="false"
+                        android:minHeight="20dip"
+                        android:text="套餐选择"
+                        android:gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="18.0dip" />
+
+                    <ImageView android:id="@+id/iv_arror_mysay" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@+id/iv_line_mysay" android:background="@drawable/line_1" android:focusable="false" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/tv_mysay" />
+                </RelativeLayout>
+                
+                 <RelativeLayout
+                     android:id="@+id/rl_mysay1"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="15.0dip"
+                     android:gravity="top" >
+
+                     <Button
+                        android:id="@+id/tv_update"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:background="@color/tou"
+                        android:focusable="false"
+                        android:minHeight="20dip"
+                        android:text="绑定应用"
+                        android:gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="18.0dip" />
+
+                    <ImageView android:id="@+id/iv_arror_mysay1" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+					
+                </RelativeLayout>
+
+                 <ImageView
+                     android:id="@+id/iv_line_mysay"
+                     android:layout_width="fill_parent"
+                     android:layout_height="1.0dip"
+                     android:layout_marginTop="15.0dip"
+                     android:background="@drawable/line_1"
+                     android:focusable="false" />
+                
+                  <RelativeLayout android:id="@+id/rl_mysay2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                     <Button
+                        android:id="@+id/tv_unbind"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginBottom="25dip"
+                        android:background="@color/tou"
+                        android:focusable="false"
+                        android:minHeight="20dip"
+                        android:text="解绑应用"
+                        android:gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="18.0dip" />
+
+                    <ImageView android:id="@+id/iv_arror_mysay" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+                </RelativeLayout>
+<!--                 <RelativeLayout android:id="@+id/rl_update" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip"> -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/tv_update" -->
+<!--                         android:layout_width="fill_parent" -->
+<!--                         android:layout_height="wrap_content" -->
+<!--                         android:layout_marginLeft="10.0dip" -->
+<!--                         android:background="@color/tou" -->
+<!--                         android:focusable="false" -->
+<!--                         android:minHeight="20dip" -->
+<!--                         android:text="绑定应用" -->
+<!--                         android:gravity="left" -->
+<!--                         android:textColor="@color/black" -->
+<!--                         android:textSize="18.0dip" /> -->
+
+<!--                     <ImageView android:id="@+id/iv_arror_mysay" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" /> -->
+<!--                     <ImageView android:id="@+id/iv_line_mysay" android:background="@drawable/line_1" android:focusable="false" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/tv_mysay" /> -->
+<!--                 </RelativeLayout> -->
+                
+                
+<!--                 <RelativeLayout android:id="@+id/rl_unbind" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip"> -->
+
+<!--                     <Button -->
+<!--                         android:id="@+id/tv_unbind" -->
+<!--                         android:layout_width="fill_parent" -->
+<!--                         android:layout_height="wrap_content" -->
+<!--                         android:layout_alignParentLeft="true" -->
+<!--                         android:layout_marginLeft="10.0dip" -->
+<!--                         android:background="@color/tou" -->
+<!--                         android:focusable="false" -->
+<!--                         android:minHeight="20dip" -->
+<!--                         android:text="解绑应用" -->
+<!--                         android:gravity="left" -->
+<!--                         android:textColor="@color/black" -->
+<!--                         android:textSize="18.0dip" /> -->
+
+<!--                     <ImageView android:id="@+id/img_new" android:background="#eeeef1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/tv_update" /> -->
+<!--                     <ImageView android:id="@+id/iv_arror_upapp" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="13.0dip" android:layout_alignParentRight="true" /> -->
+<!--                     <TextView android:textSize="15.0dip" android:textColor="#eeeef1" android:id="@+id/txt_version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/iv_arror_upapp" /> -->
+<!--                     <ImageView android:id="@+id/iv_line_upapp" android:background="@drawable/line_1" android:focusable="false" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/tv_update" /> -->
+<!--                 </RelativeLayout> -->
+                
+                
+                
+<!--                 <RelativeLayout android:id="@+id/rl_mydd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip"> -->
+<!--                     <TextView android:textSize="18.0dip" android:textColor="@color/black" android:id="@+id/tv_mydd" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="个人设置" /> -->
+<!--                     <ImageView android:id="@+id/iv_arror_mydd" android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" /> -->
+<!--                     <TextView android:textSize="18.0dip" android:textColor="#eeeef1" android:id="@+id/tv_my_username" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:maxWidth="100.0dip" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/iv_arror_mydd" /> -->
+<!--                 </RelativeLayout> -->
+
+                  <ImageView
+                      android:id="@+id/iv_line_mysay"
+                      android:layout_width="fill_parent"
+                      android:layout_height="1.0dip"
+                      android:layout_marginTop="15.0dip"
+                      android:background="@drawable/line_1"
+                      android:focusable="false" 
+                      android:visibility="invisible" />
+                
+            </LinearLayout>
+            
+<!--             <RelativeLayout android:id="@+id/rl_data" android:background="@drawable/bg_y" android:padding="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip"> -->
+<!--                 <TextView android:textSize="18.0dip" android:textColor="@color/black" android:id="@+id/txt_data" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="切换到外网" android:layout_alignParentLeft="true" /> -->
+<!--                 <ImageView android:background="@drawable/icon_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" /> -->
+<!--             </RelativeLayout> -->
+            
+<!--             <ImageView android:id="@+id/kf_phone_botton" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="60.0dip" android:src="@null" /> -->
+        </LinearLayout>
+        
+    </ScrollView>
+</RelativeLayout>

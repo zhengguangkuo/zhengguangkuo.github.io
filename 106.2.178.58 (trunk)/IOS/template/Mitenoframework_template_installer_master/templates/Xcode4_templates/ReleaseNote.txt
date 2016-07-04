@@ -1,0 +1,20 @@
+MitenoFrameWork IOS v0.1
+===========================================================================
+BUILD REQUIREMENTS:
+
+iOS 5.0 SDK or later
+
+===========================================================================
+RUNTIME REQUIREMENTS:
+
+iOS 5.0 or later, Automatic Reference Counting (ARC)
+
+===========================================================================
+CHANGES FROM PREVIOUS VERSIONS:
+
+v0.1  add the RootController, LocalDB, FileManager, NetWoking Kit, 3rdParty                       
+
+Things and Extension Tool.
+
+===========================================================================
+Copyright (C) 2014 Miteno Inc. All rights reserved.

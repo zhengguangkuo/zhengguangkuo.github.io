@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeebe4" >
+
+    <LinearLayout
+        android:id="@+id/llregister"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/head_top_rl"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:background="@color/top_orange" >
+
+            <TextView
+                android:id="@+id/g_head_top_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="注册用户"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/g_head_top_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="8.0dip"
+                android:background="#BFC8CC"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/registerbacktbn"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/tou"
+                android:src="@drawable/pressed" />
+                <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/registerbacktbn"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:src="@drawable/top_border" />
+            
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llphone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_y" >
+
+           
+
+                
+
+                <EditText
+                    android:id="@+id/Re_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.78"
+                    android:hint=" 手机号码"
+                    android:background="@null"
+                    android:contentDescription="mobile"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/delete_register_phone"
+                    android:layout_width="20.0dip"
+                    android:layout_height="20.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/index_x"
+                    android:visibility="visible" />
+           
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_y" >
+
+            
+
+              
+
+                <EditText
+                    android:id="@+id/Re_Name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.92"
+                    android:background="@null"
+                    android:hint=" 用户名"
+                    android:contentDescription="id"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/delete_register_username"
+                    android:layout_width="20.0dip"
+                    android:layout_height="20.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/index_x"
+                    android:visibility="visible" />
+          
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_y" >
+
+            
+
+               
+
+                <EditText
+                    android:id="@+id/Re_pass"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.92"
+                    android:hint=" 登录密码"
+                    android:background="@null"
+                    android:contentDescription="password"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/delete_register_pass"
+                    android:layout_width="20.0dip"
+                    android:layout_height="20.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/index_x"
+                    android:visibility="visible" />
+          
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:text="密码由6-20个英文字母，数字或符号组成。"
+            android:textColor="@color/black"
+            android:textSize="10dp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_y" >
+
+            
+               
+                <EditText
+                    android:id="@+id/Re_surePass"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.91"
+                    android:background="@null"
+                    android:hint=" 再次输入登录密码"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/delete_register_repass"
+                    android:layout_width="20.0dip"
+                    android:layout_height="20.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/index_x"
+                    android:visibility="visible" />
+           
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:text="密码由6-20个英文字母，数字或符号组成。"
+            android:textColor="@color/black"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/text_Check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="点击获取验证码"
+            android:textColor="@color/black"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="122dp"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="30dp"
+            android:background="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="6dp"
+                android:text="请输入获取的验证码："
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <EditText
+                android:id="@+id/check_data"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_y"
+                android:contentDescription="valid_code"
+                android:inputType="number"
+                android:maxLength="6" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_successRegist"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:text="注册"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</ScrollView>

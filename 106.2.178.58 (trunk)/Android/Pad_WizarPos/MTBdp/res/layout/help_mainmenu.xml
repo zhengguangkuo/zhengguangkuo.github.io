@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+      <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:orientation="horizontal" >
+       <Button
+        android:id="@+id/btn_listview"
+        android:layout_height="30dp"
+        android:layout_width="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="列表显示"
+        android:background="@drawable/pay_button_pressed"/>
+       <Button
+        android:id="@+id/btn_tab_top"
+        android:layout_height="30dp"
+        android:layout_width="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="Tab菜单(上)"
+        android:background="@drawable/pay_button_pressed"/>
+      <Button
+        android:id="@+id/btn_tab_bottom"
+        android:layout_height="30dp"
+        android:layout_width="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="Tab菜单(下)"
+        android:background="@drawable/pay_button_pressed"/>
+     </LinearLayout>
+     <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:orientation="horizontal" >
+       <Button
+        android:id="@+id/btn_slide"
+        android:layout_height="30dp"
+        android:layout_width="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="滑动菜单"
+        android:background="@drawable/pay_button_pressed"/>
+       <Button
+        android:id="@+id/btn_reuseLayout"
+        android:layout_height="30dp"
+        android:layout_width="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="Layout复用"
+        android:background="@drawable/pay_button_pressed"/>
+      </LinearLayout>
+</LinearLayout>
+</ScrollView>

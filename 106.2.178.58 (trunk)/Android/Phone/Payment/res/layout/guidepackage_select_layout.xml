@@ -1,0 +1,79 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            layout="@layout/title" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#e7e7e7" />
+
+        <ListView
+            android:id="@+id/guidesmlistview"
+            android:layout_width="fill_parent"
+            android:layout_height="326dp"
+            android:layout_weight="1.13"
+            android:cacheColorHint="#00000000"
+            android:divider="#e7e7e7"
+            android:dividerHeight="1dp"
+            android:drawSelectorOnTop="false" >
+        </ListView>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="80dip" >
+
+            <Button
+                android:id="@+id/cancelselectpackage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="22dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_button_selector"
+                android:shadowColor="#55000000"
+                android:shadowDx="0"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="取消"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/guideselectpackage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="22dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_button_selector"
+                android:shadowColor="#55000000"
+                android:shadowDx="0"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="确定"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </LinearLayout>
+    
+    <ImageView 
+        android:id="@+id/package_frame_imageview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/basecard_set_details_1"/>
+
+</FrameLayout>

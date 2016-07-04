@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_top_bg"
+        android:gravity="center_vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_eleBusDetails_back"
+            android:layout_width="55dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/top_bt_bg" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="32dp"
+            android:src="@drawable/gb_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:shadowColor="#99ffffff"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="活动详情"
+            android:textColor="#654c0d"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/esv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="-6dp"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/eleBusDetails_imageView"
+                android:layout_width="360dp"
+                android:layout_height="260dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/xiang" >
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="11dp"
+                    android:text="优惠详情"
+                    android:textColor="#ff9802"
+                    android:textSize="18dp" >
+                </TextView>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_2"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="11dp"
+                    android:textColor="#6f6f6f" >
+
+                    <WebView
+                        android:id="@+id/eDetails_webview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:scrollbars="vertical" >
+                    </WebView>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="11dp"
+                    android:text="使用期限"
+                    android:textColor="#ff9802"
+                    android:textSize="18dp" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_time_eleBusDetails"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_2"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="11dp"
+                    android:textColor="#6f6f6f" >
+                </TextView>
+                
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="11dp"
+                    android:text="商家详情"
+                    android:textColor="#ff9802"
+                    android:textSize="18dp" >
+                </TextView>
+
+                <LinearLayout
+                            
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:background="@drawable/details_bg_2" >
+                            <TextView 
+                                android:id="@+id/text_merchant_details_eleBusDetails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:paddingBottom="15dp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="11dp"
+                                android:textColor="#1192f5"
+                                android:text="点击此处查看详情"
+                                android:background="@drawable/map_text_selector" />
+                        </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/linear_left_002"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:background="@drawable/details_bg_1"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="11dp"
+                            android:text="商家地址"
+                            android:textColor="#ff9802"
+                            android:textSize="18dp" >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/text_address_eleBusDetails"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:background="@drawable/details_bg_2"
+                            android:paddingBottom="15dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="2dp"
+                            android:paddingTop="11dp"
+                            android:textColor="#6f6f6f" >
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tv_map_eleBusDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/linear_left_002"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@id/linear_left_002"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="-1.6dp"
+                        android:layout_toRightOf="@id/linear_left_002"
+                        android:background="@drawable/details_map_bg1"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="19dp"
+                            android:layout_height="38dp"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="14dp"
+                            android:src="@drawable/map_icon" >
+                        </ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="9dp"
+                            android:layout_marginTop="5dp"
+                            android:text="查看地图"
+                            android:textColor="#1192f5"
+                            android:textSize="12dp" >
+                        </TextView>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="11dp"
+                    android:text="联系方式"
+                    android:textColor="#ff9802"
+                    android:textSize="18dp" >
+                </TextView>
+                
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/details_bg_2" >
+
+                    <TextView
+                        android:id="@+id/text_tele_eleBusDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="11dp"
+                        android:textColor="#6f6f6f" >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/image_phone_ele_bus"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="50dp"
+                        android:src="@drawable/phone"
+                        android:layout_marginTop="10dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

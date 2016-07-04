@@ -1,0 +1,41 @@
+//
+//  Prefix.pch
+//  M-Pay
+//
+//  Created by guorong on 14-2-24.
+//  Copyright miteno 2014年. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+
+
+#endif
+
+
+#define iOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
+#ifdef DEBUG
+#   define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#   define ELog(err) {if(err) DLog(@"%@", err)}
+#else
+#   define DLog(...)
+#   define ELog(err)
+#endif
+
+#define ALog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);};
+
+#define CNil(A) ([A isKindOfClass:[NSNull class]]?TRUE:FALSE)
+
+//打包后打开
+//#define NSLog(...);

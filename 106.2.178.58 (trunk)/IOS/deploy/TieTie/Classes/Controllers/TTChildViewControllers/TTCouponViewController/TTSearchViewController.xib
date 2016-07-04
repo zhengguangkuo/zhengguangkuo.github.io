@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TTSearchViewController">
+            <connections>
+                <outlet property="searchDisplayController" destination="dVK-E4-khV" id="1Jg-IB-xA7"/>
+                <outlet property="searchTF" destination="kzH-fm-JuO" id="ghv-cP-gfu"/>
+                <outlet property="view" destination="mvt-Nc-izz" id="Di9-kE-QOV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mvt-Nc-izz">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="请输入商户名称、地点" translatesAutoresizingMaskIntoConstraints="NO" id="kzH-fm-JuO">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="oEO-IW-Nu2"/>
+                    </connections>
+                </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxQ-WU-46g">
+                    <rect key="frame" x="266" y="11" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="√">
+                        <color key="titleColor" red="0.033457880434782594" green="0.033457880434782594" blue="0.033457880434782594" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected" title="√">
+                        <color key="titleColor" red="0.82449473510000004" green="0.82449473510000004" blue="0.82449473510000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.61731487771739135" green="0.61731487771739135" blue="0.61731487771739135" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="searchGO:" destination="-1" eventType="touchUpInside" id="vLJ-aV-Gri"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+        <searchDisplayController id="hYu-H6-1d7">
+            <connections>
+                <outlet property="delegate" destination="-1" id="Jas-sA-jIY"/>
+                <outlet property="searchContentsController" destination="-1" id="4LZ-le-DfI"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="Esw-pD-TwN"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="pi1-oC-t9Y"/>
+            </connections>
+        </searchDisplayController>
+        <searchDisplayController id="5mo-PS-WA5">
+            <connections>
+                <outlet property="delegate" destination="-1" id="2U8-cI-0V0"/>
+                <outlet property="searchContentsController" destination="-1" id="CXf-i0-oJV"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="ZJR-xy-OTr"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="c3J-bV-Fz0"/>
+            </connections>
+        </searchDisplayController>
+        <searchDisplayController id="ZP3-rw-tIp">
+            <connections>
+                <outlet property="delegate" destination="-1" id="qVk-tj-Ba4"/>
+                <outlet property="searchContentsController" destination="-1" id="dZ0-AC-lFn"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="Ruc-Bj-YSL"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="hKR-ax-kUy"/>
+            </connections>
+        </searchDisplayController>
+        <searchDisplayController id="tLl-gp-3Ye">
+            <connections>
+                <outlet property="delegate" destination="-1" id="c5n-Dy-Ttj"/>
+                <outlet property="searchBar" destination="kzH-fm-JuO" id="JrF-rL-dne"/>
+                <outlet property="searchContentsController" destination="-1" id="tap-Sa-bV3"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="ntP-KA-XDT"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="LeN-z9-XXL"/>
+            </connections>
+        </searchDisplayController>
+        <searchDisplayController id="dVK-E4-khV">
+            <connections>
+                <outlet property="delegate" destination="-1" id="6XE-Ne-WRQ"/>
+                <outlet property="searchContentsController" destination="-1" id="0D4-AC-RB0"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="UXp-Cu-hFW"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="bac-ta-iSs"/>
+            </connections>
+        </searchDisplayController>
+    </objects>
+</document>

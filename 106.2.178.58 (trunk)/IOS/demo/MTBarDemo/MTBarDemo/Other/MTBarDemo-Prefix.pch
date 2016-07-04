@@ -1,0 +1,30 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+#endif
+
+
+//日志相关
+#ifdef DEBUG
+#define MTLog(...) NSLog(__VA_ARGS__)
+#else
+#define MTLog(...)
+#endif
+
+//设备相关
+#define iOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
+#define isIOS7 iOS7?64:0

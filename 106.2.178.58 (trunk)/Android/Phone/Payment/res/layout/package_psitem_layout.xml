@@ -1,0 +1,28 @@
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableRow1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/SMtextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#282828"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        android:text="TextView" />
+
+        <RadioButton
+            android:id="@+id/SMradio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginRight="15dp"
+             />
+
+</TableRow>

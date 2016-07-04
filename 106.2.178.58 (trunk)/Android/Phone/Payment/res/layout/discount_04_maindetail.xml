@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white">
+
+    
+    
+    <ImageView 
+ 	    android:id="@+id/imageView_xiangqing"
+ 	    android:layout_width="360dp" 
+  		android:layout_height="wrap_content"
+  		android:src="@drawable/xiang">
+ 	</ImageView>
+ 	
+    <TextView 
+ 	    android:id="@+id/textView_xiangqing_1" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:layout_marginLeft="20dp"
+  		android:layout_marginRight="20dp"
+  		android:textSize="18dp"
+  		android:textColor="@color/top_orange"
+  		android:text="优惠详情"
+  		>
+ 	</TextView>
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangqing_2" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:layout_marginLeft="20dp"
+  		android:layout_marginRight="20dp"
+  		>
+   	</TextView>
+   	
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangqing_3" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:layout_marginLeft="20dp"
+  		android:layout_marginRight="20dp"
+  		android:textSize="18dp"
+  		android:textColor="@color/top_orange"
+  		android:text="使用期限"
+  		>
+ 	</TextView>
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangqing_4" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:layout_marginLeft="20dp"
+  		android:layout_marginRight="20dp"
+  		>
+   	</TextView>
+   	
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangqing_5" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:layout_marginLeft="20dp"
+  		android:layout_marginRight="20dp"
+  		android:textSize="18dp"
+  		android:textColor="@color/top_orange"
+  		android:text="商家地址"
+  		>
+ 	</TextView>
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangqing_6" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:layout_marginLeft="20dp"
+  		android:layout_marginRight="20dp"
+  		>
+   	</TextView>
+   	<ImageView 
+ 	    android:id="@+id/imageView_xiangqing_button"
+ 	    android:layout_width="fill_parent" 
+  		android:layout_height="wrap_content"
+  		android:layout_marginTop="50dp"
+  		android:src="@drawable/xiangxi_button">
+ 	</ImageView>
+
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@+id/login_barll" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <include android:id="@+id/login_bar" layout="@layout/convenient_payment_nologin_index_bar" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/login_barll">
+    <include android:id="@+id/mianindex" layout="@layout/convenient_payment_index" />
+    </RelativeLayout>
+</RelativeLayout>

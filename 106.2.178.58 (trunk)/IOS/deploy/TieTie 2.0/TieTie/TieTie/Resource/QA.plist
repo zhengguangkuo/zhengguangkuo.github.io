@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Q1</key>
+	<dict>
+		<key>title</key>
+		<string>Q1:如何下载贴贴世界客户端？</string>
+		<key>content</key>
+		<string>答：您好，贴贴世界客户端下载方式有两种：方式1、通过手机扫描二维码下载客户端。方式2、通过www.tietieworld.com网站下载客户端。</string>
+	</dict>
+	<key>Q2</key>
+	<dict>
+		<key>title</key>
+		<string>Q2:贴贴客户端注册方式有哪些？</string>
+		<key>content</key>
+		<string>答：贴贴客户端注册方式有三种。方式1、手机端注册：1.1、下载贴贴世界客户端1.2、输入手机号码和密码1.3、获取验证码，并同意用户协议1.4、注册完成方式2、POS机注册：您好，请您携带基卡在贴贴世界签约商户处，商户会在POS机为您完成注册，完成注册后请您下载客户端捆绑基卡使用。</string>
+	</dict>
+	<key>Q3</key>
+	<dict>
+		<key>title</key>
+		<string>Q3:贴贴世界客户端支持哪些手机系统？</string>
+		<key>content</key>
+		<string>答：您好，贴贴世界客户端支持安卓4.0以上版本操作系统和苹果7.0以上版本操作系统。</string>
+	</dict>
+	<key>Q4</key>
+	<dict>
+		<key>title</key>
+		<string>Q4:贴贴客户端注册都支持哪些运营商？</string>
+		<key>content</key>
+		<string>答：您好，客户端注册支持大陆地区（除固定座机和港澳台地区）所有移动运营商。</string>
+	</dict>
+	<key>Q5</key>
+	<dict>
+		<key>title</key>
+		<string>Q5:如何注册成为贴贴用户？</string>
+		<key>content</key>
+		<string>答：您好，有两种方式可以注册成为贴贴用户。方式1、您可以下载手机贴贴客户端注册贴贴用户。方式2、您携带基卡和手机在商户POS机上注册贴贴用户。</string>
+	</dict>
+	<key>Q6</key>
+	<dict>
+		<key>title</key>
+		<string>Q6:如何登录/退出贴贴客户端？</string>
+		<key>content</key>
+		<string>答：您好，登录方法如下：步骤1、打开贴贴客户端步骤2、选择“快速登录”步骤3、输入手机号和密码步骤4、贴贴客户端登入完成退出方法如下：步骤1、贴贴客户端中选择“更多”模块步骤2、在“更多”模块中选择“退出账号”步骤3、确认退出账号步骤4、贴贴客户端退出完成</string>
+	</dict>
+	<key>Q7</key>
+	<dict>
+		<key>title</key>
+		<string>Q7:什么是贴券？什么是贴友？什么是贴分？</string>
+		<key>content</key>
+		<string>答：您好，贴券是贴贴世界用户已领取的优惠券，包括满减券/折扣券/代金券。贴友是用户注册贴贴世界客户端后相互添加为好友。贴分是贴贴世界或其他与贴贴合作的机构赠送给用户的积分。</string>
+	</dict>
+	<key>Q8</key>
+	<dict>
+		<key>title</key>
+		<string>Q8:贴券的类型有哪些？</string>
+		<key>content</key>
+		<string>答：贴券的类型按发券形式分有两种，分别是返券和领券。贴券按使用形式划分，有满减券/折扣券/代金券3种形式。</string>
+	</dict>
+	<key>Q9</key>
+	<dict>
+		<key>title</key>
+		<string>Q9:什么是返券？什么是领券？</string>
+		<key>content</key>
+		<string>答：您好，返券是优惠券有“返”标识，代表该优惠券类型为消费后派发类型优惠券，需要在指定商家消费一定程度才能派发。领券是优惠券有“领”标识，代表该优惠券类型为可直接领取的优惠券，进去优惠券的详情页面即可领取。</string>
+	</dict>
+	<key>Q10</key>
+	<dict>
+		<key>title</key>
+		<string>Q10:如何领取优惠券？</string>
+		<key>content</key>
+		<string>答：您好，领券方法如下：步骤1、登录贴贴客户端后选择“优惠”模块步骤2、在优惠券中选择有“领”标识的优惠券步骤3、选择“立刻领取优惠券”确认步骤4、优惠券领用完成</string>
+	</dict>
+	<key>Q11</key>
+	<dict>
+		<key>title</key>
+		<string>Q11:如何查看贴券的详细信息？</string>
+		<key>content</key>
+		<string>答：您好，步骤如下：步骤1、登录贴贴客户端后选择“优惠”模块步骤2、选择优惠券后进入优惠券详情进行查看</string>
+	</dict>
+	<key>Q12</key>
+	<dict>
+		<key>title</key>
+		<string>Q12:如何查看和搜索商户信息呢？</string>
+		<key>content</key>
+		<string>答：您好，搜索查看步骤如下：步骤1、登录贴贴客户端后选择“优惠”模块步骤2、在“优惠”模块中选择右上方的“搜索”标识步骤3、输入商户信息进行检索</string>
+	</dict>
+	<key>Q13</key>
+	<dict>
+		<key>title</key>
+		<string>Q13:如何添加贴友？</string>
+		<key>content</key>
+		<string>答：您好，请您确认添加的手机号已经是我们贴贴世界的用户，这样以下步骤才能操作完成。添加贴友步骤如下：方法一：步骤1、登入贴贴客户端后选择“贴友”步骤2、在“贴友”中选择右上方的“加号”标识步骤3、在“添加贴友”处输入需要添加的“贴贴账号/手机号“步骤4、点击旁边的搜索按钮，即可以看到“添加好友”按钮，步骤5、点击“添加好友”按钮，完成贴友添加方法二：步骤1、登入贴贴客户端后选择“贴友”步骤2、在“贴友”中选择右上方的“加号”标识步骤3、在“添加贴友”进入”添加手机联系人“步骤4、在”通讯录贴友“中找到要添加的贴友。步骤5、点击”添加“按钮，即可以看到“添加好友”按钮步骤6、点击“添加好友”按钮，弹出“添加好友成功”提示，完成添加贴友</string>
+	</dict>
+	<key>Q14</key>
+	<dict>
+		<key>title</key>
+		<string>Q14:如何把贴券转给朋友用，怎么操作？</string>
+		<key>content</key>
+		<string>答：您好，把贴券转给朋友步骤如下：步骤1、首先对方是贴贴世界的用户步骤2、添加对方为贴友步骤3、点击“贴友”列表中右下角的“赠券”图标步骤4、页面跳转至“赠送贴券”列表，选择要赠送的优惠券步骤5、点击右边的“赠”按钮步骤6、点击“确定”按钮，赠送完成</string>
+	</dict>
+	<key>Q15</key>
+	<dict>
+		<key>title</key>
+		<string>Q15:如何查看赠出的贴券？</string>
+		<key>content</key>
+		<string>答：查看增出贴券的步骤如下：步骤1、登录贴贴客户端后选择“贴券”步骤2、在“贴券”中查看已“收到的礼物”列表您可以查看一下信息：优惠券名称、赠送时间、来自赠送的人手机号码，状态（接受）及接收券的张数</string>
+	</dict>
+	<key>Q16</key>
+	<dict>
+		<key>title</key>
+		<string>Q16:如何查看别人赠给我的贴券？</string>
+		<key>content</key>
+		<string>答：查看收到的贴券的步骤如下：步骤1、登录贴贴客户端后选择“贴券”步骤2、在“贴券”查看已“接收的礼物”列表步骤3、在“接收的礼物”即可以查看一下信息：优惠券名称、赠送时间、赠送的人（手机号码），券的状态（等待接收、已接收）及接收券的张数</string>
+	</dict>
+	<key>Q17</key>
+	<dict>
+		<key>title</key>
+		<string>Q17:如何设置个人信息？</string>
+		<key>content</key>
+		<string>答：设置个人信息的步骤如下：步骤1、登录贴贴客户端后选择“更多”模块步骤2、在“更多”模块中选择“个人信息”步骤3、进入“个人信息”后填写您的信息，各个信息项中无必填项</string>
+	</dict>
+	<key>Q18</key>
+	<dict>
+		<key>title</key>
+		<string>Q18:如何设置我的二维码名片？</string>
+		<key>content</key>
+		<string>答：二维码无需设置，需要您在个人信息中完善信息后二维码自动生成。</string>
+	</dict>
+	<key>Q19</key>
+	<dict>
+		<key>title</key>
+		<string>Q19:什么是基卡？</string>
+		<key>content</key>
+		<string>答：基卡可以是任何一种支持13.56M非接触IC卡。目前贴贴世界的基卡有4种：北京市政公交一卡通背面带“C”标识、贴贴滴胶卡（微型个性化公交卡）、贴贴外贴卡（粘在手机外壳）、贴贴内贴卡（放在手机壳内）</string>
+	</dict>
+	<key>Q20</key>
+	<dict>
+		<key>title</key>
+		<string>Q20:如何设置基卡？</string>
+		<key>content</key>
+		<string>答：您好，操作流程如下：步骤1、登录手机客户端选择“更多”步骤2、选择基卡设置步骤3、选择基卡类型（贴贴卡或公交卡）步骤4、输入基卡卡号并获取验证码步骤5、输入验证码步骤6、基卡设置完成</string>
+	</dict>
+	<key>Q21</key>
+	<dict>
+		<key>title</key>
+		<string>Q21:如何解绑基卡？</string>
+		<key>content</key>
+		<string>答：您好，操作流程如下：步骤1、登录手机客户端选择“更多”步骤2、选择基卡设置步骤3、长按要解绑的基卡，出现文字提示“您要取消此基卡的绑定吗”步骤4、点击”确认“，解绑基卡完成</string>
+	</dict>
+	<key>Q22</key>
+	<dict>
+		<key>title</key>
+		<string>Q22:如何修改登入密码？</string>
+		<key>content</key>
+		<string>答：您好，修改登入密码步骤如下：步骤1、点击”安全设置“，跳转至安全设置页面步骤2、点击”登录密码“，跳转至”登录密码“页面步骤3、输入原登录密码、新登录密码、确认新密码步骤4、密码设置完成后选择右上角“保存”设置完成</string>
+	</dict>
+	<key>Q23</key>
+	<dict>
+		<key>title</key>
+		<string>Q23:如何修改支付密码？</string>
+		<key>content</key>
+		<string>答：您好，修改支付密码步骤如下：步骤1、点击”安全设置“，跳转至安全设置页面步骤2，点击”支付密码“，跳转至”支付密码“页面步骤3、选择“修改支付密码”输入旧支付密码、新支付密码、确认新支付密码、贴贴客户端登入密码步骤4、密码设置完成后选择右上角“提交”设置完成</string>
+	</dict>
+	<key>Q24</key>
+	<dict>
+		<key>title</key>
+		<string>Q24:如何更换手机号？</string>
+		<key>content</key>
+		<string>答：您好，更换手机号步骤如下：步骤1、点击”安全设置“，跳转至安全设置页面步骤2，点击”更改手机号“，跳转至”手机号码“页面步骤3、输入原手机号码、新手机号码、获取短信验证码步骤4、输入贴贴客户端登录密码、设置完成后选择右上角“保存”设置完成</string>
+	</dict>
+	<key>Q25</key>
+	<dict>
+		<key>title</key>
+		<string>Q25:贴贴密码忘记怎么办？</string>
+		<key>content</key>
+		<string>答：您好，登入手机客户端后，选择“忘记密码”通过手机找回或密保找回密码。</string>
+	</dict>
+	<key>Q26</key>
+	<dict>
+		<key>title</key>
+		<string>Q26:一个手机号码只能注册一个用户捆绑一张贴贴卡吗？</string>
+		<key>content</key>
+		<string>答：您好，一个手机号只能注册一个用户但是可以捆绑多张贴卡。</string>
+	</dict>
+	<key>Q27</key>
+	<dict>
+		<key>title</key>
+		<string>Q27:收不到验证码怎么办？</string>
+		<key>content</key>
+		<string>答：您好，请您耐心等待，由于运营商的网络问题，有可能会出现延迟的情况，建议您再次尝试操作。如仍未解决请您再次拨打我们的客服热线400-0328-666咨询。</string>
+	</dict>
+	<key>Q28</key>
+	<dict>
+		<key>title</key>
+		<string>Q28:为什么我的公交卡不能绑定贴贴客户端？</string>
+		<key>content</key>
+		<string>答：您好，贴贴客户端支持带“C”标的公交IC卡，请您使用此卡进行绑定，如果没有此卡建议领取贴贴外贴卡或内贴卡进行绑定。</string>
+	</dict>
+	<key>Q29</key>
+	<dict>
+		<key>title</key>
+		<string>Q29:在贴贴客户端领取贴券后如何使用？</string>
+		<key>content</key>
+		<string>答：贴贴客户端领取贴券后捆绑公交卡或贴贴卡后到指定商户刷卡即可享受优惠。</string>
+	</dict>
+</dict>
+</plist>

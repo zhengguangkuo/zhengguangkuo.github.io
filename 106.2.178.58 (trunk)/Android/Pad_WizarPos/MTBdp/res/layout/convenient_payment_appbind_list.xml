@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#eeebe4" >
+    <RelativeLayout android:background="@color/top_orange" android:id="@+id/tv_title" android:layout_width="fill_parent" android:layout_height="60dip">
+        <TextView android:textSize="20sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@+id/g_head_top_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="绑定应用" android:singleLine="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <Button android:textColor="@color/white" android:id="@+id/g_head_top_but" android:background="#BFC8CC" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+
+       <ImageButton
+            android:id="@+id/appbindbackbtn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/tou"
+            android:src="@drawable/pressed" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/appbindbackbtn"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:src="@drawable/top_border" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/app_bind_listView" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:background="#eeebe4"
+        android:paddingBottom="10dip"
+        android:divider="@null">
+        
+    </ListView>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="65dp" 
+        android:background="#eeebe4">
+        <Button
+            android:id="@+id/app_bind_button" 
+            android:layout_height="40dp"
+            android:layout_width="80dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginLeft="5dip"
+            android:text="绑定"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:background="@drawable/normalpress"/>
+    </LinearLayout>
+
+</LinearLayout>

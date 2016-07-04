@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/top_bggg">
+    
+    <Button
+            android:id="@+id/btn_elePay_back"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_bggg" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/gb_button" />
+
+        <TextView
+            android:id="@+id/appmanage_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="应用管理"
+            android:textColor="#ff000000"
+            android:textSize="18dp" />
+
+          <Button
+              android:id="@+id/unbindbtn"
+              android:layout_width="50dp"
+              android:layout_height="30dp"
+              android:layout_alignParentRight="true"
+              android:layout_centerVertical="true"
+              android:layout_marginRight="17dp"
+              android:background="@drawable/button_bggg"
+              android:text="解绑"
+              android:textColor="@color/white" />
+
+</RelativeLayout>

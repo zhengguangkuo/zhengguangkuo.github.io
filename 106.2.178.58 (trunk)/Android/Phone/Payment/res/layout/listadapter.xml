@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:layout_width="match_parent" 
+ 	android:layout_height="match_parent"
+ 	android:orientation="horizontal"
+ 	android:background="@drawable/ele_list_bg">
+ 	
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+		android:layout_marginLeft="8dp">
+
+ 	<ImageView 
+ 	    android:id="@+id/imageView"
+ 	    android:layout_width="116dp" 
+  		android:layout_height="83dp"
+  		android:padding="2dp"
+  		android:scaleType="fitXY">
+ 	</ImageView>
+ 	<ImageView 
+ 	    android:id="@+id/imageViewBorder"
+ 	    android:layout_width="wrap_content" 
+  		android:layout_height="wrap_content"
+  		android:background="@drawable/logo_border">
+ 	</ImageView>
+ 	</RelativeLayout>
+
+ 	<LinearLayout
+ 	    android:id="@+id/list_xiangxi"
+ 	    android:layout_width="wrap_content"
+ 	    android:layout_height="wrap_content"
+ 	    android:layout_alignParentLeft="true"
+ 	    android:layout_gravity="center"
+ 	    android:layout_marginLeft="10dp"
+ 	    android:orientation="vertical" >
+
+    <TextView 
+ 	    android:id="@+id/textView" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:textSize="16sp"
+  		android:textStyle="bold"
+  		android:textColor="#fa7319"
+  		>
+ 		</TextView>
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangxi_2" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:textSize="13sp"
+  		android:textColor="#4a4a4a"
+  		android:textStyle="bold"
+  		android:text="趣玩"
+  		>
+ 		</TextView>
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangxi_3" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:text="20130706-20130831"
+  		android:textSize="13sp"
+  		android:textColor="#8c8c8c"
+  		>
+ 		</TextView>
+ 	<TextView 
+ 	    android:id="@+id/textView_xiangxi_4" 
+ 	    android:layout_width="wrap_content"
+  		android:layout_height="wrap_content" 
+  		android:layout_gravity="left"
+  		android:text="258次"
+  		android:textSize="13sp"
+  		android:textColor="#8c8c8c"
+  		>
+ 		</TextView>
+ 	
+ 		
+    </LinearLayout>
+ 	
+</LinearLayout>

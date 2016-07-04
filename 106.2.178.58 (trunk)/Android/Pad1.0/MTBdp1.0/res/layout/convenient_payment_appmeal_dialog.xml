@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#ff000000"
+    android:id="@+id/convenient_payment_appmeal_dialog" >
+    
+    <TextView
+        android:id="@+id/tv_text" 
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="温馨提示：......"
+        android:textSize="16dp"
+        android:textColor="#ffffffff"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+   <!--   <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/btn_makeSure_bind" 
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="确定"
+            android:layout_marginLeft="70dp"/>
+         <Button
+            android:id="@+id/btn_makeSure_cancel" 
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="取消"
+            android:layout_marginLeft="30dp"/>
+    </LinearLayout>  -->
+</LinearLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DIALOGINFORMATION>
+  <DIALOG>
+         <UNIQUEMARK>REUSE_FIRST.SCREEN</UNIQUEMARK>
+   	     <LAYOUT>help_reuse_layout</LAYOUT><!--显示需要使用的LayOut布局文件名 ，布局文件中最大的View的id名-->
+   	     <COMPONENT><!--对话框中需要显示的控件-->
+   	        <CONTENT>
+   	            <CONTENTID>text_timer</CONTENTID>
+   	            <EXTENSION>
+   	                <TIMER>30</TIMER>
+   	            </EXTENSION>
+   	        </CONTENT>
+            <CONTENT>
+          	 	 <CONTENTID>image_first</CONTENTID><!--默认属性名-->
+          	     <EXTENSION>
+          	         <IMAGE_SRC>jiugongge3</IMAGE_SRC>
+          	     </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>btn_first</CONTENTID>
+          	 	 <EXTENSION>
+          	 	 	  <TEXT>查询余额</TEXT>
+          	 	 	  <TEXTCOLOR>RED</TEXTCOLOR>
+          	 	 </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>btn_second</CONTENTID>
+          	 	 <EXTENSION>
+          	 	 	  <TEXT>查询流水</TEXT>
+          	 	 	  <TEXTCOLOR>GREEN</TEXTCOLOR>
+          	 	 </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>checkbox_first</CONTENTID>
+          	 	 <DESCRIPTION>check_info</DESCRIPTION><!--此属性一般是提交或反显表单项时用到，只要配置了该字段，就得在自动装表单，提交表单之前将该值设置到该控件的contentDescription属性上，如果是按钮类控件通常不会用到，可以不指定此项--><!--将该文本框中输入的数据存到以该名为属性名的对象中-->
+          	 	 <EXTENSION>
+          	 	     <CHECKED>false</CHECKED>
+          	 	 </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>btn_third</CONTENTID>
+          	 	 <EXTENSION>
+          	 	 	  <TEXT>查询交易</TEXT>
+          	 	 </EXTENSION>
+          	</CONTENT>
+         </COMPONENT>
+         <VISIBILITY>
+         	  <DEFAULTVALUE>VISIBLE</DEFAULTVALUE><!--控件默认的可见属性VISIBLE,INVISIBLE,GONE-->
+         	  <VISIBLEOPT>
+         	  	   <CONTENTIDS>image_second</CONTENTIDS>
+         	  	   <CONTENTIDS>text_first</CONTENTIDS>
+         	  </VISIBLEOPT>
+         </VISIBILITY>   
+  </DIALOG>
+  <DIALOG>
+         <UNIQUEMARK>REUSE_SECOND.SCREEN</UNIQUEMARK>
+   	     <LAYOUT>help_reuse_layout</LAYOUT><!--显示需要使用的LayOut布局文件名 ，布局文件中最大的View的id名-->
+   	     <COMPONENT><!--对话框中需要显示的控件-->
+            <CONTENT>
+          	 	 <CONTENTID>image_first</CONTENTID><!--默认属性名-->
+          	     <EXTENSION>
+          	         <IMAGE_SRC>jiugongge3</IMAGE_SRC>
+          	         <WIDTH>100</WIDTH><!-- 此处配的是需要改变的控件的宽度 -->
+          	         <HEIGHT>40</HEIGHT><!-- 该控件的高度不变，此处配的是原layout中的控件的高度 -->
+          	         <MARGIN_LEFT>100</MARGIN_LEFT>
+          	         <MARGIN_TOP>20</MARGIN_TOP>
+          	     </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>btn_first</CONTENTID>
+          	 	 <EXTENSION>
+          	 	 	  <TEXT>确定按钮确定按钮确定按钮确定按钮确定按钮确定按钮确定按钮</TEXT>
+                      <SINGLELINE>true</SINGLELINE><!-- 只有text才有该属性，对hint不起作用 -->
+          	 	 	  <BACKGROUND>pay_button_pressed</BACKGROUND>
+          	 	 	  <TEXTCOLOR>CYAN</TEXTCOLOR>
+          	 	 	  <WIDTH>200</WIDTH>
+          	 	 	  <TEXTSIZE>30</TEXTSIZE>
+                      <BACKGROUNDCOLOR>BLUE</BACKGROUNDCOLOR>
+                      <MARGIN_TOP>20</MARGIN_TOP><!-- 此处配的是需要改变的控件的上边距 -->
+                      <MARGIN_LEFT>20</MARGIN_LEFT><!-- 该控件的左边距不变，此处配的是原layout中的控件的左边距 -->
+          	 	 </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	    <CONTENTID>image_second</CONTENTID>
+          	    <EXTENSION>
+          	        <IMAGE_SRC>jiugongge3</IMAGE_SRC>
+          	        <BACKGROUNDCOLOR>GREEN</BACKGROUNDCOLOR>
+                    <CLICKABLE>false</CLICKABLE>
+          	    </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>btn_second</CONTENTID>
+          	 	 <EXTENSION>
+          	 	     <BACKGROUND>pay_button_pressed</BACKGROUND>
+          	 	 	  <TEXTCOLOR>GREEN</TEXTCOLOR>
+          	 	 	  <HINT>取消</HINT>
+                      <CLICKABLE>false</CLICKABLE>
+          	 	 </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	    <CONTENTID>checkbox_first</CONTENTID>
+          	    <EXTENSION>
+          	        <CHECKED>false</CHECKED>
+                    <BACKGROUNDCOLOR>YELLOW</BACKGROUNDCOLOR>
+                    <HINT>复选框</HINT>
+                    <TEXT>多选框</TEXT>
+                    <TEXTCOLOR>RED</TEXTCOLOR>
+                    <TEXTSIZE>30</TEXTSIZE>
+                    <MARGIN_LEFT>50</MARGIN_LEFT><!-- 此处配的是需要改变的控件的左边距 -->
+                    <MARGIN_TOP>50</MARGIN_TOP><!-- 该控件的上边距不变，此处配的是原layout中控件的上边距-->
+          	    </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+          	 	 <CONTENTID>text_first</CONTENTID>
+          	 	 <EXTENSION>
+          	 	 	  <TEXT>这里是测试复用的界面，该文本是单行文本，singleLine属性为true</TEXT>
+          	 	 	  <TEXTCOLOR>RED</TEXTCOLOR>
+          	 	 	  <TEXTSIZE>25</TEXTSIZE>
+          	 	 	  <SINGLELINE>true</SINGLELINE>
+          	 	 	  <MARGIN_LEFT>50</MARGIN_LEFT><!-- 此处配的是需要改变的控件的左边距 -->
+          	 	 	  <MARGIN_TOP>60</MARGIN_TOP><!-- 该控件的上边距不变，此处配的是原layout中控件的上边距 -->
+          	 	 	  <MARGIN_RIGHT>10</MARGIN_RIGHT><!-- 该控件的右边距不变，此处配的是原layout中控件的右边距 -->
+          	 	 </EXTENSION>
+          	</CONTENT>
+          	<CONTENT>
+   	            <CONTENTID>text_timer</CONTENTID>
+   	            <EXTENSION>
+   	                <TIMER>20</TIMER>
+   	                <MARGIN_LEFT>50</MARGIN_LEFT><!-- 此处配的是需要改变的控件的左边距 -->
+   	                <MARGIN_TOP>50</MARGIN_TOP><!-- 该控件的上边距不变，此处配的是原layout中的控件的上边距 -->
+   	            </EXTENSION>
+   	        </CONTENT>
+         </COMPONENT>
+         <VISIBILITY>
+         	  <DEFAULTVALUE>VISIBLE</DEFAULTVALUE><!--控件默认的可见属性VISIBLE,INVISIBLE-->
+         	  <VISIBLEOPT>
+         	  	   <CONTENTIDS>btn_third</CONTENTIDS>
+         	  </VISIBLEOPT>
+         </VISIBILITY>   
+  </DIALOG>
+</DIALOGINFORMATION>

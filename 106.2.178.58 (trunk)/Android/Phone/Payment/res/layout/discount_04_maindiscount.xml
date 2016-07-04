@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+<!-- *****列表布局与控件***** -->
+    <LinearLayout
+        android:id="@+id/listlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical" >
+		         	<TextView 
+         	android:layout_width="fill_parent"
+            android:layout_height="3dp"    
+            android:background="@drawable/ele_list_top_bg"/>
+        <ListView
+            android:id="@+id/id_listdiscount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="#00000000"
+            android:cacheColorHint="#00000000">
+
+         	</ListView>
+    </LinearLayout>
+<!-- ************ -->
+</LinearLayout>

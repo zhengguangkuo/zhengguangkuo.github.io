@@ -1,0 +1,620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE72B7D01895087D00F41736 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE72B7CF1895087D00F41736 /* Foundation.framework */; };
+		DE72B7D21895087D00F41736 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE72B7D11895087D00F41736 /* CoreGraphics.framework */; };
+		DE72B7D41895087D00F41736 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE72B7D31895087D00F41736 /* UIKit.framework */; };
+		DE72B7DA1895087D00F41736 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE72B7D81895087D00F41736 /* InfoPlist.strings */; };
+		DE72B7DC1895087D00F41736 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B7DB1895087D00F41736 /* main.m */; };
+		DE72B7E01895087D00F41736 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B7DF1895087D00F41736 /* AppDelegate.m */; };
+		DE72B7E31895087D00F41736 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE72B7E11895087D00F41736 /* Main.storyboard */; };
+		DE72B7E61895087D00F41736 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B7E51895087D00F41736 /* ViewController.m */; };
+		DE72B7E81895087D00F41736 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE72B7E71895087D00F41736 /* Images.xcassets */; };
+		DE72B7EF1895087D00F41736 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE72B7EE1895087D00F41736 /* XCTest.framework */; };
+		DE72B7F01895087D00F41736 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE72B7CF1895087D00F41736 /* Foundation.framework */; };
+		DE72B7F11895087D00F41736 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE72B7D31895087D00F41736 /* UIKit.framework */; };
+		DE72B7F91895087D00F41736 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE72B7F71895087D00F41736 /* InfoPlist.strings */; };
+		DE72B7FB1895087D00F41736 /* HUDAndiToastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B7FA1895087D00F41736 /* HUDAndiToastTests.m */; };
+		DE72B83A1895091400F41736 /* nor_registerBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B8381895091400F41736 /* nor_registerBtn.png */; };
+		DE72B83B1895091400F41736 /* nor_registerBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B8391895091400F41736 /* nor_registerBtn@2x.png */; };
+		DE72B84918950C6F00F41736 /* CustomDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B84418950C6F00F41736 /* CustomDialog.m */; };
+		DE72B84A18950C6F00F41736 /* SystemDialog+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B84618950C6F00F41736 /* SystemDialog+Show.m */; };
+		DE72B84B18950C6F00F41736 /* SystemDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B84818950C6F00F41736 /* SystemDialog.m */; };
+		DE72B85518950C7600F41736 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B84C18950C7600F41736 /* error.png */; };
+		DE72B85618950C7600F41736 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B84D18950C7600F41736 /* error@2x.png */; };
+		DE72B85718950C7600F41736 /* MBProgressHUD+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B84F18950C7600F41736 /* MBProgressHUD+Show.m */; };
+		DE72B85818950C7600F41736 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE72B85018950C7600F41736 /* MBProgressHUD.bundle */; };
+		DE72B85918950C7600F41736 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B85218950C7600F41736 /* MBProgressHUD.m */; };
+		DE72B85A18950C7600F41736 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B85318950C7600F41736 /* success.png */; };
+		DE72B85B18950C7600F41736 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B85418950C7600F41736 /* success@2x.png */; };
+		DE72B85E18950CF600F41736 /* OneItoastAndHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B85D18950CF600F41736 /* OneItoastAndHUDViewController.m */; };
+		DE72B86118950E6600F41736 /* TwoItoastAndHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B86018950E6600F41736 /* TwoItoastAndHUDViewController.m */; };
+		DE72B86518950F7B00F41736 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE72B86418950F7B00F41736 /* Toast+UIView.m */; };
+		DE72B867189512A000F41736 /* toast.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72B866189512A000F41736 /* toast.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE72B7F21895087D00F41736 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE72B7C41895087D00F41736 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE72B7CB1895087D00F41736;
+			remoteInfo = HUDAndiToast;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DE72B7CC1895087D00F41736 /* HUDAndiToast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HUDAndiToast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE72B7CF1895087D00F41736 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DE72B7D11895087D00F41736 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DE72B7D31895087D00F41736 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DE72B7D71895087D00F41736 /* HUDAndiToast-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HUDAndiToast-Info.plist"; sourceTree = "<group>"; };
+		DE72B7D91895087D00F41736 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE72B7DB1895087D00F41736 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE72B7DD1895087D00F41736 /* HUDAndiToast-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HUDAndiToast-Prefix.pch"; sourceTree = "<group>"; };
+		DE72B7DE1895087D00F41736 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DE72B7DF1895087D00F41736 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DE72B7E21895087D00F41736 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE72B7E41895087D00F41736 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DE72B7E51895087D00F41736 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DE72B7E71895087D00F41736 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DE72B7ED1895087D00F41736 /* HUDAndiToastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HUDAndiToastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE72B7EE1895087D00F41736 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DE72B7F61895087D00F41736 /* HUDAndiToastTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HUDAndiToastTests-Info.plist"; sourceTree = "<group>"; };
+		DE72B7F81895087D00F41736 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE72B7FA1895087D00F41736 /* HUDAndiToastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HUDAndiToastTests.m; sourceTree = "<group>"; };
+		DE72B8381895091400F41736 /* nor_registerBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nor_registerBtn.png; sourceTree = "<group>"; };
+		DE72B8391895091400F41736 /* nor_registerBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nor_registerBtn@2x.png"; sourceTree = "<group>"; };
+		DE72B84318950C6F00F41736 /* CustomDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDialog.h; sourceTree = "<group>"; };
+		DE72B84418950C6F00F41736 /* CustomDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDialog.m; sourceTree = "<group>"; };
+		DE72B84518950C6F00F41736 /* SystemDialog+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SystemDialog+Show.h"; sourceTree = "<group>"; };
+		DE72B84618950C6F00F41736 /* SystemDialog+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SystemDialog+Show.m"; sourceTree = "<group>"; };
+		DE72B84718950C6F00F41736 /* SystemDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemDialog.h; sourceTree = "<group>"; };
+		DE72B84818950C6F00F41736 /* SystemDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemDialog.m; sourceTree = "<group>"; };
+		DE72B84C18950C7600F41736 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		DE72B84D18950C7600F41736 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
+		DE72B84E18950C7600F41736 /* MBProgressHUD+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Show.h"; sourceTree = "<group>"; };
+		DE72B84F18950C7600F41736 /* MBProgressHUD+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Show.m"; sourceTree = "<group>"; };
+		DE72B85018950C7600F41736 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		DE72B85118950C7600F41736 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DE72B85218950C7600F41736 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		DE72B85318950C7600F41736 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		DE72B85418950C7600F41736 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
+		DE72B85C18950CF600F41736 /* OneItoastAndHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneItoastAndHUDViewController.h; sourceTree = "<group>"; };
+		DE72B85D18950CF600F41736 /* OneItoastAndHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneItoastAndHUDViewController.m; sourceTree = "<group>"; };
+		DE72B85F18950E6600F41736 /* TwoItoastAndHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoItoastAndHUDViewController.h; sourceTree = "<group>"; };
+		DE72B86018950E6600F41736 /* TwoItoastAndHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoItoastAndHUDViewController.m; sourceTree = "<group>"; };
+		DE72B86318950F7B00F41736 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		DE72B86418950F7B00F41736 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		DE72B866189512A000F41736 /* toast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toast.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE72B7C91895087D00F41736 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE72B7D21895087D00F41736 /* CoreGraphics.framework in Frameworks */,
+				DE72B7D41895087D00F41736 /* UIKit.framework in Frameworks */,
+				DE72B7D01895087D00F41736 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE72B7EA1895087D00F41736 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE72B7EF1895087D00F41736 /* XCTest.framework in Frameworks */,
+				DE72B7F11895087D00F41736 /* UIKit.framework in Frameworks */,
+				DE72B7F01895087D00F41736 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE72B7C31895087D00F41736 = {
+			isa = PBXGroup;
+			children = (
+				DE72B7D51895087D00F41736 /* HUDAndiToast */,
+				DE72B7F41895087D00F41736 /* HUDAndiToastTests */,
+				DE72B7CE1895087D00F41736 /* Frameworks */,
+				DE72B7CD1895087D00F41736 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE72B7CD1895087D00F41736 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B7CC1895087D00F41736 /* HUDAndiToast.app */,
+				DE72B7ED1895087D00F41736 /* HUDAndiToastTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE72B7CE1895087D00F41736 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B7CF1895087D00F41736 /* Foundation.framework */,
+				DE72B7D11895087D00F41736 /* CoreGraphics.framework */,
+				DE72B7D31895087D00F41736 /* UIKit.framework */,
+				DE72B7EE1895087D00F41736 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE72B7D51895087D00F41736 /* HUDAndiToast */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B7DE1895087D00F41736 /* AppDelegate.h */,
+				DE72B7DF1895087D00F41736 /* AppDelegate.m */,
+				DE72B7E11895087D00F41736 /* Main.storyboard */,
+				DE72B7E41895087D00F41736 /* ViewController.h */,
+				DE72B7E51895087D00F41736 /* ViewController.m */,
+				DE72B83E18950BEC00F41736 /* 方案一 */,
+				DE72B83C18950BEC00F41736 /* 方案二 */,
+				DE72B7D61895087D00F41736 /* Supporting Files */,
+			);
+			path = HUDAndiToast;
+			sourceTree = "<group>";
+		};
+		DE72B7D61895087D00F41736 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B7E71895087D00F41736 /* Images.xcassets */,
+				DE72B866189512A000F41736 /* toast.png */,
+				DE72B8381895091400F41736 /* nor_registerBtn.png */,
+				DE72B8391895091400F41736 /* nor_registerBtn@2x.png */,
+				DE72B7D71895087D00F41736 /* HUDAndiToast-Info.plist */,
+				DE72B7D81895087D00F41736 /* InfoPlist.strings */,
+				DE72B7DB1895087D00F41736 /* main.m */,
+				DE72B7DD1895087D00F41736 /* HUDAndiToast-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE72B7F41895087D00F41736 /* HUDAndiToastTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B7FA1895087D00F41736 /* HUDAndiToastTests.m */,
+				DE72B7F51895087D00F41736 /* Supporting Files */,
+			);
+			path = HUDAndiToastTests;
+			sourceTree = "<group>";
+		};
+		DE72B7F51895087D00F41736 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B7F61895087D00F41736 /* HUDAndiToastTests-Info.plist */,
+				DE72B7F71895087D00F41736 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE72B83C18950BEC00F41736 /* 方案二 */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B83D18950BEC00F41736 /* TwoItoastAndHUDViewController */,
+				DE72B86218950F5500F41736 /* lib */,
+			);
+			path = "方案二";
+			sourceTree = "<group>";
+		};
+		DE72B83D18950BEC00F41736 /* TwoItoastAndHUDViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B85F18950E6600F41736 /* TwoItoastAndHUDViewController.h */,
+				DE72B86018950E6600F41736 /* TwoItoastAndHUDViewController.m */,
+			);
+			path = TwoItoastAndHUDViewController;
+			sourceTree = "<group>";
+		};
+		DE72B83E18950BEC00F41736 /* 方案一 */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B83F18950BEC00F41736 /* OneItoastAndHUDViewController */,
+				DE72B84018950C2900F41736 /* lib */,
+			);
+			path = "方案一";
+			sourceTree = "<group>";
+		};
+		DE72B83F18950BEC00F41736 /* OneItoastAndHUDViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B85C18950CF600F41736 /* OneItoastAndHUDViewController.h */,
+				DE72B85D18950CF600F41736 /* OneItoastAndHUDViewController.m */,
+			);
+			path = OneItoastAndHUDViewController;
+			sourceTree = "<group>";
+		};
+		DE72B84018950C2900F41736 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B84118950C6600F41736 /* iToast */,
+				DE72B84218950C6600F41736 /* MBProgressHUD */,
+			);
+			name = lib;
+			path = OneItoastAndHUDViewController/lib;
+			sourceTree = "<group>";
+		};
+		DE72B84118950C6600F41736 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B84318950C6F00F41736 /* CustomDialog.h */,
+				DE72B84418950C6F00F41736 /* CustomDialog.m */,
+				DE72B84518950C6F00F41736 /* SystemDialog+Show.h */,
+				DE72B84618950C6F00F41736 /* SystemDialog+Show.m */,
+				DE72B84718950C6F00F41736 /* SystemDialog.h */,
+				DE72B84818950C6F00F41736 /* SystemDialog.m */,
+			);
+			path = iToast;
+			sourceTree = "<group>";
+		};
+		DE72B84218950C6600F41736 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B84C18950C7600F41736 /* error.png */,
+				DE72B84D18950C7600F41736 /* error@2x.png */,
+				DE72B84E18950C7600F41736 /* MBProgressHUD+Show.h */,
+				DE72B84F18950C7600F41736 /* MBProgressHUD+Show.m */,
+				DE72B85018950C7600F41736 /* MBProgressHUD.bundle */,
+				DE72B85118950C7600F41736 /* MBProgressHUD.h */,
+				DE72B85218950C7600F41736 /* MBProgressHUD.m */,
+				DE72B85318950C7600F41736 /* success.png */,
+				DE72B85418950C7600F41736 /* success@2x.png */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		DE72B86218950F5500F41736 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				DE72B86318950F7B00F41736 /* Toast+UIView.h */,
+				DE72B86418950F7B00F41736 /* Toast+UIView.m */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE72B7CB1895087D00F41736 /* HUDAndiToast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE72B7FE1895087D00F41736 /* Build configuration list for PBXNativeTarget "HUDAndiToast" */;
+			buildPhases = (
+				DE72B7C81895087D00F41736 /* Sources */,
+				DE72B7C91895087D00F41736 /* Frameworks */,
+				DE72B7CA1895087D00F41736 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HUDAndiToast;
+			productName = HUDAndiToast;
+			productReference = DE72B7CC1895087D00F41736 /* HUDAndiToast.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DE72B7EC1895087D00F41736 /* HUDAndiToastTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE72B8011895087D00F41736 /* Build configuration list for PBXNativeTarget "HUDAndiToastTests" */;
+			buildPhases = (
+				DE72B7E91895087D00F41736 /* Sources */,
+				DE72B7EA1895087D00F41736 /* Frameworks */,
+				DE72B7EB1895087D00F41736 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE72B7F31895087D00F41736 /* PBXTargetDependency */,
+			);
+			name = HUDAndiToastTests;
+			productName = HUDAndiToastTests;
+			productReference = DE72B7ED1895087D00F41736 /* HUDAndiToastTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE72B7C41895087D00F41736 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = wenguang;
+				TargetAttributes = {
+					DE72B7EC1895087D00F41736 = {
+						TestTargetID = DE72B7CB1895087D00F41736;
+					};
+				};
+			};
+			buildConfigurationList = DE72B7C71895087D00F41736 /* Build configuration list for PBXProject "HUDAndiToast" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE72B7C31895087D00F41736;
+			productRefGroup = DE72B7CD1895087D00F41736 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE72B7CB1895087D00F41736 /* HUDAndiToast */,
+				DE72B7EC1895087D00F41736 /* HUDAndiToastTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE72B7CA1895087D00F41736 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE72B7E81895087D00F41736 /* Images.xcassets in Resources */,
+				DE72B85A18950C7600F41736 /* success.png in Resources */,
+				DE72B85B18950C7600F41736 /* success@2x.png in Resources */,
+				DE72B85818950C7600F41736 /* MBProgressHUD.bundle in Resources */,
+				DE72B83A1895091400F41736 /* nor_registerBtn.png in Resources */,
+				DE72B85518950C7600F41736 /* error.png in Resources */,
+				DE72B7DA1895087D00F41736 /* InfoPlist.strings in Resources */,
+				DE72B7E31895087D00F41736 /* Main.storyboard in Resources */,
+				DE72B83B1895091400F41736 /* nor_registerBtn@2x.png in Resources */,
+				DE72B867189512A000F41736 /* toast.png in Resources */,
+				DE72B85618950C7600F41736 /* error@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE72B7EB1895087D00F41736 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE72B7F91895087D00F41736 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE72B7C81895087D00F41736 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE72B85E18950CF600F41736 /* OneItoastAndHUDViewController.m in Sources */,
+				DE72B84B18950C6F00F41736 /* SystemDialog.m in Sources */,
+				DE72B84918950C6F00F41736 /* CustomDialog.m in Sources */,
+				DE72B7E61895087D00F41736 /* ViewController.m in Sources */,
+				DE72B7E01895087D00F41736 /* AppDelegate.m in Sources */,
+				DE72B84A18950C6F00F41736 /* SystemDialog+Show.m in Sources */,
+				DE72B86518950F7B00F41736 /* Toast+UIView.m in Sources */,
+				DE72B7DC1895087D00F41736 /* main.m in Sources */,
+				DE72B86118950E6600F41736 /* TwoItoastAndHUDViewController.m in Sources */,
+				DE72B85718950C7600F41736 /* MBProgressHUD+Show.m in Sources */,
+				DE72B85918950C7600F41736 /* MBProgressHUD.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE72B7E91895087D00F41736 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE72B7FB1895087D00F41736 /* HUDAndiToastTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE72B7F31895087D00F41736 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE72B7CB1895087D00F41736 /* HUDAndiToast */;
+			targetProxy = DE72B7F21895087D00F41736 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE72B7D81895087D00F41736 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE72B7D91895087D00F41736 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE72B7E11895087D00F41736 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE72B7E21895087D00F41736 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE72B7F71895087D00F41736 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE72B7F81895087D00F41736 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE72B7FC1895087D00F41736 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DE72B7FD1895087D00F41736 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE72B7FF1895087D00F41736 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HUDAndiToast/HUDAndiToast-Prefix.pch";
+				INFOPLIST_FILE = "HUDAndiToast/HUDAndiToast-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DE72B8001895087D00F41736 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HUDAndiToast/HUDAndiToast-Prefix.pch";
+				INFOPLIST_FILE = "HUDAndiToast/HUDAndiToast-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DE72B8021895087D00F41736 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HUDAndiToast.app/HUDAndiToast";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HUDAndiToast/HUDAndiToast-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HUDAndiToastTests/HUDAndiToastTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DE72B8031895087D00F41736 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HUDAndiToast.app/HUDAndiToast";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HUDAndiToast/HUDAndiToast-Prefix.pch";
+				INFOPLIST_FILE = "HUDAndiToastTests/HUDAndiToastTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE72B7C71895087D00F41736 /* Build configuration list for PBXProject "HUDAndiToast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE72B7FC1895087D00F41736 /* Debug */,
+				DE72B7FD1895087D00F41736 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE72B7FE1895087D00F41736 /* Build configuration list for PBXNativeTarget "HUDAndiToast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE72B7FF1895087D00F41736 /* Debug */,
+				DE72B8001895087D00F41736 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DE72B8011895087D00F41736 /* Build configuration list for PBXNativeTarget "HUDAndiToastTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE72B8021895087D00F41736 /* Debug */,
+				DE72B8031895087D00F41736 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE72B7C41895087D00F41736 /* Project object */;
+}

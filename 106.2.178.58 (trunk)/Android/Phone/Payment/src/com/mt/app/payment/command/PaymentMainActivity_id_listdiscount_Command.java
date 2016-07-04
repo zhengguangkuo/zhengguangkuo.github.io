@@ -1,0 +1,23 @@
+package com.mt.app.payment.command;
+
+import com.mt.android.sys.mvc.command.AbstractCommand;
+import com.mt.android.sys.mvc.common.Response;
+import com.mt.android.view.common.ActivityID;
+
+public class PaymentMainActivity_id_listdiscount_Command extends AbstractCommand{
+	
+	
+	
+	 @Override
+    protected void go() {
+	// TODO Auto-generated method stub
+		  Response response= new Response();
+		  setResponse(response);
+ }
+	   @Override
+		protected void onAfterExecute()
+		{
+		   Response response = getResponse();
+			response.setTargetActivityID(ActivityID.map.get("ACTIVITY_ID_Discount_02_MainDetailActivity"));
+		}
+	}

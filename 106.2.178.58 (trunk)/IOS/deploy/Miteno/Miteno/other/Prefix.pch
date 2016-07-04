@@ -1,0 +1,72 @@
+//
+//  Prefix.pch
+//  Miteno
+//
+//  Created by HWG on 14-2-24.
+//  Copyright wenguang 2014年. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "ArchiveTool.h"
+#import "Config.h"
+#import "UIImage+Image.h"
+#import "NSString+File.h"
+#import "FileManager.h"
+#import "UIView+ViewFrameGeometry.h"
+#import "SystemDialog+Show.h"
+#import "MJRefresh.h"
+#import "RegexKitLite.h"
+#import "AFNetWorking.h"
+#import "JSONKit.h"
+#import "UINavigationController(addition).h"
+#import "DbHelper.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD+Show.h"
+
+//--------------*   *   贴贴   *   *
+#import "UIBarButtonItem+TTBarItem.h"
+#import "TTSettingKeys.h"
+#import "TTSettingTool.h"
+#import "TTAccountTool.h"
+#import "TTAccount.h"
+#import "TieTieTool.h"
+#import "TTCityModel.h"
+#import "TTXMPPTool.h"
+#import "EGOCache.h"
+#endif
+
+#ifdef DEBUG
+#   define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#   define ELog(err) {if(err) DLog(@"%@", err)}
+#else
+#   define DLog(...)
+#   define ELog(err)
+#endif
+
+#define ALog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);};
+
+#define CNil(A) (A==nil?YES:NO)
+
+#define IsEmptyString(A) ([A length]==0?YES:NO)
+
+#if TARGET_IPHONE_SIMULATOR
+#define SIMULATOR 1
+#elif TARGET_OS_IPHONE
+#define SIMULATOR 0
+#endif
+// 自定义Log
+#ifdef DEBUG // 调试
+#define MyLog(...) NSLog(__VA_ARGS__)
+#else // 发布打包
+#define MyLog(...)
+#endif

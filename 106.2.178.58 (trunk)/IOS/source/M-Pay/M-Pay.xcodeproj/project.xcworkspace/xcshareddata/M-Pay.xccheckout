@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>08CCA3D9-420E-494A-80F1-D89970E0FA4B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>M-Pay</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8665C2B9-6A88-4E5C-96E0-CF34DBB95BEF</key>
+		<string>svn://106.2.178.58/trunk/IOS</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>source/M-Pay/M-Pay.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8665C2B9-6A88-4E5C-96E0-CF34DBB95BEF</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>8665C2B9-6A88-4E5C-96E0-CF34DBB95BEF</key>
+		<string>svn://106.2.178.58</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://106.2.178.58/trunk/IOS/source/M-Pay/M-Pay.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8665C2B9-6A88-4E5C-96E0-CF34DBB95BEF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8665C2B9-6A88-4E5C-96E0-CF34DBB95BEF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

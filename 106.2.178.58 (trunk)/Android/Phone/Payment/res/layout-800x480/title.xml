@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/main_top_bg"
+    android:gravity="center_vertical"
+    android:paddingBottom="4dp" >
+
+        <Button
+            android:id="@+id/onoff"
+            android:layout_width="55dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/top_bt_bg" 
+            />
+        <ImageView
+            android:id="@+id/onoffB"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="32dp"
+            android:src="@drawable/gb_button" />
+        
+         <Spinner android:id="@+id/Spinner01"  
+           style="@style/spinner_city"
+           android:layout_marginTop="7dp"
+           android:paddingBottom="0dp"
+           android:paddingTop="0dp"
+           android:paddingLeft="17dp"
+           android:layout_width="80dp"  
+           android:layout_alignParentRight="true"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp"
+           android:visibility="gone"
+           />
+
+         <TextView
+             android:id="@+id/titlewelcome"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_centerVertical="true"
+             android:text="主菜单 "
+             android:textStyle="bold"
+             android:textColor="#654c0d"
+             android:textSize="22sp" 
+             android:shadowColor="#99ffffff"
+    		 android:shadowDx="0"
+   			 android:shadowDy="2"
+   			 android:shadowRadius="1"/>
+
+         <Button
+             android:id="@+id/RegisterBtn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_centerVertical="true"
+             android:text="Button" 
+             android:textStyle="bold"
+             android:visibility="invisible"
+             android:textColor="#ffffff"
+             android:shadowColor="#99000000"
+    		 android:shadowDx="0"
+   			 android:shadowDy="-1"
+   			 android:shadowRadius="1"
+            android:background="@drawable/top_bt_bg" 
+             android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"/>
+         
+         <Button
+             android:id="@+id/packageaction"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:visibility="invisible"
+             android:text="定制" 
+             android:textStyle="bold"
+             android:textColor="#ffffff"
+             android:shadowColor="#99000000"
+    		 android:shadowDx="0"
+   			 android:shadowDy="-1"
+   			 android:shadowRadius="1"
+            android:background="@drawable/top_bt_bg" 
+             android:layout_marginTop="7dp"
+            android:layout_marginRight="10dp"/>
+         
+       <TextView
+             android:id="@+id/welUserText"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_centerVertical="true"
+             android:gravity="center_horizontal"
+             android:background="@drawable/bt_menu"
+             android:visibility="invisible"
+             android:layout_marginLeft="10dip"/>
+
+ </RelativeLayout>
