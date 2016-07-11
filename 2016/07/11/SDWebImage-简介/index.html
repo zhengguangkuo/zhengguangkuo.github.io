@@ -16,7 +16,7 @@
 <meta property="og:description" content="简述
 作用：一个异步下载图片并且支持缓存的UIImageView分类。
 机制：UIImageView+WebCache 和 UIButton+WebCache 直接为表层的 UIKit 框架提供接口, 而 SDWebImageManger 负责处理和协调 SDWebImageDownloader 和 SDWebImageCache. 并与 UIKit 层进行交互, 而底层的一些类为更高层级的抽象提">
-<meta property="og:updated_time" content="2016-07-11T05:29:22.000Z">
+<meta property="og:updated_time" content="2016-07-11T05:35:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage 简介">
 <meta name="twitter:description" content="简述
@@ -247,38 +247,32 @@
         <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><ul>
 <li>作用：一个异步下载图片并且支持缓存的UIImageView分类。</li>
 <li>机制：UIImageView+WebCache 和 UIButton+WebCache 直接为表层的 UIKit 框架提供接口, 而 SDWebImageManger 负责处理和协调 SDWebImageDownloader 和 SDWebImageCache. 并与 UIKit 层进行交互, 而底层的一些类为更高层级的抽象提供支持.</li>
-<li><p>流程：</p>
-<pre><code>查找缓存 
-    1.内存中查找 Y：返回图片更新视图 N：下一步
-    2.磁盘中查找 Y：返回图片更新视图 N：下一步 
-
-异步下载图片--&gt;加入缓存--&gt;更新视图
-</code></pre></li>
+<li>流程：</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查找缓存 </div><div class="line">1.内存中查找 Y：返回图片更新视图 N：下一步</div><div class="line">2.磁盘中查找 Y：返回图片更新视图 N：下一步 </div><div class="line">异步下载图片--&gt;加入缓存--&gt;更新视图</div></pre></td></tr></table></figure>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li><p>这个框架通过category提供了非常简洁的入口，使用时只需调用sd_setImageWithURL这几个方法即可</p>
+<li>这个框架通过category提供了非常简洁的入口，使用时只需调用sd_setImageWithURL这几个方法即可</li>
+</ul>
 <pre><code>- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *MyIdentifier = @&quot;MyIdentifier&quot;;
+   static NSString *MyIdentifier = @&quot;MyIdentifier&quot;;
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier]
-                 autorelease];
-    }
+   if (cell == nil) {
+       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier]
+                autorelease];
+   }
 
-    // Here we use the provided sd_setImageWithURL: method to load the web image
-    // Ensure you use a placeholder image otherwise cells will be initialized with no image
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@&quot;http://example.com/image.jpg&quot;]
-                      placeholderImage:[UIImage imageNamed:@&quot;placeholder&quot;]];
+   // Here we use the provided sd_setImageWithURL: method to load the web image
+   // Ensure you use a placeholder image otherwise cells will be initialized with no image
+   [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@&quot;http://example.com/image.jpg&quot;]
+                     placeholderImage:[UIImage imageNamed:@&quot;placeholder&quot;]];
 
-    cell.textLabel.text = @&quot;My Text&quot;;
-    return cell;
-}    
-</code></pre></li>
-</ul>
-<p>ps： 第一次正式使用github发表文章，内容有点水，接下来会分几篇文章来分享SDWebimage开源库，主要从源码阅读、源码设计到的基础知识、涉及到的设计模式开发技巧等方面逐步分析。</p>
+   cell.textLabel.text = @&quot;My Text&quot;;
+   return cell;
+}
+</code></pre><p>ps： 第一次正式使用github发表文章，内容有点水，接下来会分几篇文章来分享SDWebimage开源库，主要从源码阅读、源码设计到的基础知识、涉及到的设计模式开发技巧等方面逐步分析。</p>
 
       
     </div>
