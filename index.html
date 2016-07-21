@@ -105,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="ciqvolutf0002lt5h9hsm2u8j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="ciqvrlve30002cg5haefu33t3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,44 +147,23 @@
 <li>这个框架通过category提供了非常简洁的入口，使用时只需调用sd_setImageWithURL这几个方法即可</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">   <span class="keyword">static</span> <span class="built_in">NSString</span> *MyIdentifier = <span class="string">@"MyIdentifier"</span>;</div><div class="line"></div><div class="line">   <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];</div><div class="line"></div><div class="line">   <span class="keyword">if</span> (cell == <span class="literal">nil</span>) &#123;</div><div class="line">       cell = [[[<span class="built_in">UITableViewCell</span> alloc] initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:MyIdentifier]</div><div class="line">                autorelease];</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">// Here we use the provided sd_setImageWithURL: method to load the web image</span></div><div class="line">   <span class="comment">// Ensure you use a placeholder image otherwise cells will be initialized with no image</span></div><div class="line">   [cell.imageView sd_setImageWithURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://example.com/image.jpg"</span>]</div><div class="line">                     placeholderImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"placeholder"</span>]];</div><div class="line"></div><div class="line">   cell.textLabel.text = <span class="string">@"My Text"</span>;</div><div class="line">   <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>&gt;<br>ps： 第一次正式使用github发表文章，内容有点水，接下来会分几篇文章来分享SDWebimage开源库，主要从源码阅读、源码设计到的基础知识、涉及到的设计模式开发技巧等方面逐步分析。</p>
+<p>ps： 第一次正式使用github发表文章，内容有点水，接下来会分几篇文章来分享SDWebimage开源库，主要从源码阅读、源码设计到的基础知识、涉及到的设计模式开发技巧等方面逐步分析。</p>
 <hr>
 <p>2017-07-13 晚</p>
 <p>看了几天源码，发现有很多基础知识不太清楚，觉得有必要在分析源码之前把涉及到的基础知识回顾总结一下：</p>
-<blockquote>
-<p>1.NS_ENUM和NS_OPTIONS</p>
-</blockquote>
-<p>NS_ENUM 通过十进制整型判断；NS_OPTIONS通过二进制为运算判断。一般情况下我们的枚举类型用NS_ENUM就够了，但是在有些业务中判断包含某种选项，或者为了不同选项之间的组合，使用NS_OPTIONS可以完美解决。我们看下面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) &#123; </div><div class="line">    SDWebImageRetryFailed = 1 &lt;&lt; 0, //0001</div><div class="line">    SDWebImageLowPriority = 1 &lt;&lt; 1, //0010</div><div class="line">    SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2, // 0100</div><div class="line">    SDWebImageProgressiveDownload = 1 &lt;&lt; 3, //1000</div><div class="line">&#125;;</div><div class="line"></div><div class="line">if(options &amp; SDWebImageRetryFailed)&#123;xxx1&#125;</div><div class="line">if(options &amp; SDWebImageLowPriority)&#123;xx1x&#125;</div><div class="line">if(options &amp; SDWebImageCacheMemoryOnly)&#123;x1xx&#125;</div><div class="line">if(options &amp; SDWebImageProgressiveDownload)&#123;1xxx&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>2.objc_setAssociatedObject和objc_getAssociatedObject –&gt; RunTime</p>
-</blockquote>
-<p>这一对方法是运行时方法，作用是给对象动态添加关联对象，关联对象我们可以理解为运行时添加的属性，这个属性值的set和get方法即为这两个方法。因为category无法直接添加属性，而很多情况下我们需要使用category里面的属性，这时候我们可以通过关联对象的方式变相添加，例如下面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">static char loadOperationKey;</div><div class="line"></div><div class="line">@implementation UIView (WebCacheOperation)</div><div class="line"></div><div class="line">/*框架中的所有操作实际上都是通过一个 operationDictionary 来管理, 而这个字典实际上是动态的添加到 UIView 上的一个属性, 至于为什么添加到 UIView 上, 主要是因为这个  operationDictionary 需要在 UIButton 和 UIImageView 上重用, 所以需要添加到它们的根类上.*/</div><div class="line"></div><div class="line">- (NSMutableDictionary *)operationDictionary &#123;</div><div class="line">    /* 获取关联对象*/</div><div class="line">    /*</div><div class="line">     这个loadOperationKey 的定义是:static char loadOperationKey;</div><div class="line">     它对应的绑定在UIView的属性是operationDictionary(NSMutableDictionary类型)</div><div class="line">     operationDictionary的value是操作,key是针对不同类型视图和不同类型的操作设定的字符串</div><div class="line">     注意:&amp;是一元运算符结果是右操作对象的地址(&amp;loadOperationKey返回static char loadOperationKey的地址)</div><div class="line">     */</div><div class="line">    NSMutableDictionary *operations = objc_getAssociatedObject(self, &amp;loadOperationKey);</div><div class="line">    //如果可以查到operations,就rerun,反之给视图绑定一个新的,空的operations字典</div><div class="line">    if (operations) &#123;</div><div class="line">        return operations;</div><div class="line">    &#125;</div><div class="line">    operations = [NSMutableDictionary dictionary];</div><div class="line">    /* 设置关联对象*/</div><div class="line">    objc_setAssociatedObject(self, &amp;loadOperationKey, operations, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">    return operations;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>3.dispatch_async和dispatch_sync –&gt; GCD</p>
-</blockquote>
-<p>这对方法都有两个参数(dispatch_queue_t queue, dispatch_block_t block)，一个队列和一个block；对于dispatch_async来说：他把block放到队列之中，之后立刻返回，继续往下执行。对于dispatch_sync来说：他把block放到队列之中，等待block执行完返回，之后才继续往下执行。</p>
+<h3 id="1-NS-ENUM和NS-OPTIONS"><a href="#1-NS-ENUM和NS-OPTIONS" class="headerlink" title="1.NS_ENUM和NS_OPTIONS"></a>1.NS_ENUM和NS_OPTIONS</h3><p>NS_ENUM 通过十进制整型判断；NS_OPTIONS通过二进制为运算判断。一般情况下我们的枚举类型用NS_ENUM就够了，但是在有些业务中判断包含某种选项，或者为了不同选项之间的组合，使用NS_OPTIONS可以完美解决。我们看下面的代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, SDWebImageOptions) &#123; </div><div class="line">    SDWebImageRetryFailed = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//0001</span></div><div class="line">    SDWebImageLowPriority = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//0010</span></div><div class="line">    SDWebImageCacheMemoryOnly = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">// 0100</span></div><div class="line">    SDWebImageProgressiveDownload = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//1000</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(options &amp; SDWebImageRetryFailed)&#123;xxx1&#125;</div><div class="line"><span class="keyword">if</span>(options &amp; SDWebImageLowPriority)&#123;xx1x&#125;</div><div class="line"><span class="keyword">if</span>(options &amp; SDWebImageCacheMemoryOnly)&#123;x1xx&#125;</div><div class="line"><span class="keyword">if</span>(options &amp; SDWebImageProgressiveDownload)&#123;<span class="number">1</span>xxx&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-objc-setAssociatedObject和objc-getAssociatedObject-–-gt-RunTime"><a href="#2-objc-setAssociatedObject和objc-getAssociatedObject-–-gt-RunTime" class="headerlink" title="2.objc_setAssociatedObject和objc_getAssociatedObject –&gt; RunTime"></a>2.objc_setAssociatedObject和objc_getAssociatedObject –&gt; RunTime</h3><p>这一对方法是运行时方法，作用是给对象动态添加关联对象，关联对象我们可以理解为运行时添加的属性，这个属性值的set和get方法即为这两个方法。因为category无法直接添加属性，而很多情况下我们需要使用category里面的属性，这时候我们可以通过关联对象的方式变相添加，例如下面：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">char</span> loadOperationKey;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UIView</span> (<span class="title">WebCacheOperation</span>)</span></div><div class="line"></div><div class="line"><span class="comment">/*框架中的所有操作实际上都是通过一个 operationDictionary 来管理, 而这个字典实际上是动态的添加到 UIView 上的一个属性, 至于为什么添加到 UIView 上, 主要是因为这个  operationDictionary 需要在 UIButton 和 UIImageView 上重用, 所以需要添加到它们的根类上.*/</span></div><div class="line"></div><div class="line">- (<span class="built_in">NSMutableDictionary</span> *)operationDictionary &#123;</div><div class="line">    <span class="comment">/* 获取关联对象*/</span></div><div class="line">    <span class="comment">/*</span></div><div class="line">     这个loadOperationKey 的定义是:static char loadOperationKey;</div><div class="line">     它对应的绑定在UIView的属性是operationDictionary(NSMutableDictionary类型)</div><div class="line">     operationDictionary的value是操作,key是针对不同类型视图和不同类型的操作设定的字符串</div><div class="line">     注意:&amp;是一元运算符结果是右操作对象的地址(&amp;loadOperationKey返回static char loadOperationKey的地址)</div><div class="line">     */</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *operations = objc_getAssociatedObject(<span class="keyword">self</span>, &amp;loadOperationKey);</div><div class="line">    <span class="comment">//如果可以查到operations,就rerun,反之给视图绑定一个新的,空的operations字典</span></div><div class="line">    <span class="keyword">if</span> (operations) &#123;</div><div class="line">        <span class="keyword">return</span> operations;</div><div class="line">    &#125;</div><div class="line">    operations = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    <span class="comment">/* 设置关联对象*/</span></div><div class="line">    objc_setAssociatedObject(<span class="keyword">self</span>, &amp;loadOperationKey, operations, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">    <span class="keyword">return</span> operations;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-dispatch-async和dispatch-sync-–-gt-GCD"><a href="#3-dispatch-async和dispatch-sync-–-gt-GCD" class="headerlink" title="3.dispatch_async和dispatch_sync –&gt; GCD"></a>3.dispatch_async和dispatch_sync –&gt; GCD</h3><p>这对方法都有两个参数(dispatch_queue_t queue, dispatch_block_t block)，一个队列和一个block；对于dispatch_async来说：他把block放到队列之中，之后立刻返回，继续往下执行。对于dispatch_sync来说：他把block放到队列之中，等待block执行完返回，之后才继续往下执行。</p>
 <p>看下实际的代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//to show the difference of dispatch_async and dispatch_sync</div><div class="line">//串行队列</div><div class="line">dispatch_queue_t _serialQueue = dispatch_queue_create(&quot;com.example.name&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line"></div><div class="line">//异步立刻返回.放打印放入到后台执行</div><div class="line">dispatch_async(_serialQueue, ^&#123; NSLog(@&quot;1&quot;);&#125;);</div><div class="line"></div><div class="line">NSLog(@&quot;2&quot;);</div><div class="line"></div><div class="line">dispatch_async(_serialQueue, ^&#123; NSLog(@&quot;3&quot;);&#125;);</div><div class="line">NSLog(@&quot;4&quot;);</div><div class="line"></div><div class="line">//同步等待block的代码执行完.放打印放入到后台执行</div><div class="line">dispatch_sync(_serialQueue, ^&#123; NSLog(@&quot;1&quot;);&#125;);</div><div class="line"></div><div class="line">NSLog(@&quot;2&quot;);</div><div class="line"></div><div class="line">dispatch_sync(_serialQueue, ^&#123; NSLog(@&quot;3&quot;);&#125;);</div><div class="line">NSLog(@&quot;4&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//to show the difference of dispatch_async and dispatch_sync</span></div><div class="line"><span class="comment">//串行队列</span></div><div class="line"><span class="built_in">dispatch_queue_t</span> _serialQueue = dispatch_queue_create(<span class="string">"com.example.name"</span>, DISPATCH_QUEUE_SERIAL);</div><div class="line"></div><div class="line"><span class="comment">//异步立刻返回.放打印放入到后台执行</span></div><div class="line"><span class="built_in">dispatch_async</span>(_serialQueue, ^&#123; <span class="built_in">NSLog</span>(<span class="string">@"1"</span>);&#125;);</div><div class="line"></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"2"</span>);</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>(_serialQueue, ^&#123; <span class="built_in">NSLog</span>(<span class="string">@"3"</span>);&#125;);</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"4"</span>);</div><div class="line"></div><div class="line"><span class="comment">//同步等待block的代码执行完.放打印放入到后台执行</span></div><div class="line"><span class="built_in">dispatch_sync</span>(_serialQueue, ^&#123; <span class="built_in">NSLog</span>(<span class="string">@"1"</span>);&#125;);</div><div class="line"></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"2"</span>);</div><div class="line"></div><div class="line"><span class="built_in">dispatch_sync</span>(_serialQueue, ^&#123; <span class="built_in">NSLog</span>(<span class="string">@"3"</span>);&#125;);</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"4"</span>);</div></pre></td></tr></table></figure>
 <p>对于<code>dispatch_async</code>来说,把block提交到队列,立刻返回执行下一步.不等待block执行完毕.所以它的打印结果有很多中,譬如说<code>2413 或者 2143或者 1234</code>,但是1总在3前面.因为提交到的队列是<code>串行队列</code>,打印3总在打印1后执行. </p>
 <p>对于<code>dispatch_sync</code>来说,把block提交到队列,不立刻返回,它等待提交到队列的block执行完毕才继续向下执行.所以其执行结果只有一种: 1234.无论你运行多少次都会是这一种结果. </p>
-<blockquote>
-<p>4.block</p>
-</blockquote>
-<p>代码块没什么好说的</p>
-<blockquote>
-<p>5.NSAssert</p>
-</blockquote>
-<p>断言，防御式变成的常用手段</p>
-<blockquote>
-<p>6.NSOperation</p>
-</blockquote>
-<p>NSOperation的抽象程度高于NSThread，它是苹果对线程的一个面向对象封装。NSOperation表示一个独立的计算单元，作为一个抽象类，你需要实例话他的子类 ?NSInvocationOperation / ?NSBlockOperation 来进行具体操作。实例化之后，调用start方法或者加入到一个NSOperationQueue 操作队列中，就可以开始执行。</p>
-<blockquote>
-<p>7.NSCache</p>
-</blockquote>
-<p>NSCache是系统提供的一种类似于集合（NSMutableDictionary）的缓存，它与集合的不同如下：</p>
+<h3 id="4-block"><a href="#4-block" class="headerlink" title="4.block"></a>4.block</h3><p>代码块没什么好说的</p>
+<h3 id="5-NSAssert"><a href="#5-NSAssert" class="headerlink" title="5.NSAssert"></a>5.NSAssert</h3><p>断言，防御式变成的常用手段</p>
+<h3 id="6-NSOperation"><a href="#6-NSOperation" class="headerlink" title="6.NSOperation"></a>6.NSOperation</h3><p>NSOperation的抽象程度高于NSThread，它是苹果对线程的一个面向对象封装。NSOperation表示一个独立的计算单元，作为一个抽象类，你需要实例话他的子类 ?NSInvocationOperation / ?NSBlockOperation 来进行具体操作。实例化之后，调用start方法或者加入到一个NSOperationQueue 操作队列中，就可以开始执行。</p>
+<h3 id="7-NSCache"><a href="#7-NSCache" class="headerlink" title="7.NSCache"></a>7.NSCache</h3><p>NSCache是系统提供的一种类似于集合（NSMutableDictionary）的缓存，它与集合的不同如下：</p>
 <ol>
 <li><p>NSCache具有自动删除的功能，以减少系统占用的内存；</p>
 </li>
@@ -193,19 +172,13 @@
 <li><p>键对象不会像 NSMutableDictionary 中那样被复制。（键不需要实现 NSCopying 协议）</p>
 </li>
 </ol>
-<blockquote>
-<p>8.NSMutableURLRequest</p>
-</blockquote>
-<p>  网络请求参数配置</p>
-<blockquote>
-<p>9.NSURLConnection</p>
-</blockquote>
-<p>网络请求系统框架集成</p>
+<h3 id="8-NSMutableURLRequest"><a href="#8-NSMutableURLRequest" class="headerlink" title="8.NSMutableURLRequest"></a>8.NSMutableURLRequest</h3><p>  网络请求参数配置</p>
+<h3 id="9-NSURLConnection"><a href="#9-NSURLConnection" class="headerlink" title="9.NSURLConnection"></a>9.NSURLConnection</h3><p>网络请求系统框架集成</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="ciqvolutb0001lt5h5mk1wnx7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="ciqvrlvdt0000cg5hj8wxthay" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="ciqvolutl0004lt5hyr46jn25" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="ciqvrlve70004cg5h9bbbw884" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/05/hello-world/" data-id="ciqvolutj0003lt5h5aia7p3o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/05/hello-world/" data-id="ciqvrlve50003cg5hb5tr3s61" class="article-share-link">Share</a>
       
       
     </footer>
