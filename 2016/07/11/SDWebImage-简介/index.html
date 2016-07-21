@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>SDWebImage 简介 | 学无止境</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="简述
@@ -16,212 +15,72 @@
 <meta property="og:description" content="简述
 作用：一个异步下载图片并且支持缓存的UIImageView分类。
 机制：UIImageView+WebCache 和 UIButton+WebCache 直接为表层的 UIKit 框架提供接口, 而 SDWebImageManger 负责处理和协调 SDWebImageDownloader 和 SDWebImageCache. 并与 UIKit 层进行交互, 而底层的一些类为更高层级的抽象提">
-<meta property="og:updated_time" content="2016-07-21T02:06:06.000Z">
+<meta property="og:updated_time" content="2016-07-21T02:40:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage 简介">
 <meta name="twitter:description" content="简述
 作用：一个异步下载图片并且支持缓存的UIImageView分类。
 机制：UIImageView+WebCache 和 UIButton+WebCache 直接为表层的 UIKit 框架提供接口, 而 SDWebImageManger 负责处理和协调 SDWebImageDownloader 和 SDWebImageCache. 并与 UIKit 层进行交互, 而底层的一些类为更高层级的抽象提">
   
-    <link rel="alternative" href="/atom.xml" title="学无止境" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
   <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="null" class="js-avatar">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">郑广阔</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">蕴含文艺气息的程序猿</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>Menu</li>
-						<li>Tags</li>
-						
-						<li>Links</li>
-						
-						
-						<li>Über</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">文章列表</a></li>
-				        
-							<li><a href="/tags/随笔">随笔</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="#" title="github">github</a>
-					        
-								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
-					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
-					        
-								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">学无止境</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">蕴含文艺气息的程序猿</a>
+        </h2>
+      
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">郑广阔</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-			
-				<img lazy-src="null" class="js-avatar">
-			
-			</div>
-			<hgroup>
-			  <h1 class="header-author">郑广阔</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">蕴含文艺气息的程序猿</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">文章列表</a></li>
-		        
-					<li><a href="/tags/随笔">随笔</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="#" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-
-      <div class="body-wrap"><article id="post-SDWebImage-简介" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/11/SDWebImage-简介/" class="article-date">
-  	<time datetime="2016-07-11T05:23:35.000Z" itemprop="datePublished">2016-07-11</time>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SDWebImage-简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/11/SDWebImage-简介/" class="article-date">
+  <time datetime="2016-07-11T05:23:35.000Z" itemprop="datePublished">2016-07-11</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
@@ -233,14 +92,6 @@
   
 
       </header>
-      
-      <div class="article-info article-info-post">
-        
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -253,27 +104,28 @@
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
 <li>这个框架通过category提供了非常简洁的入口，使用时只需调用sd_setImageWithURL这几个方法即可</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</div><div class="line">&#123;</div><div class="line">   static NSString *MyIdentifier = @&quot;MyIdentifier&quot;;</div><div class="line"></div><div class="line">   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];</div><div class="line"></div><div class="line">   if (cell == nil) &#123;</div><div class="line">       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier]</div><div class="line">                autorelease];</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   // Here we use the provided sd_setImageWithURL: method to load the web image</div><div class="line">   // Ensure you use a placeholder image otherwise cells will be initialized with no image</div><div class="line">   [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@&quot;http://example.com/image.jpg&quot;]</div><div class="line">                     placeholderImage:[UIImage imageNamed:@&quot;placeholder&quot;]];</div><div class="line"></div><div class="line">   cell.textLabel.text = @&quot;My Text&quot;;</div><div class="line">   return cell;</div><div class="line">&#125;</div><div class="line">```	</div><div class="line">	</div><div class="line">ps： 第一次正式使用github发表文章，内容有点水，接下来会分几篇文章来分享SDWebimage开源库，主要从源码阅读、源码设计到的基础知识、涉及到的设计模式开发技巧等方面逐步分析。</div><div class="line"></div><div class="line">--- </div><div class="line">2017-07-13 晚</div><div class="line"></div><div class="line">看了几天源码，发现有很多基础知识不太清楚，觉得有必要在分析源码之前把涉及到的基础知识回顾总结一下：</div><div class="line"></div><div class="line">&gt; 1.NS_ENUM和NS_OPTIONS</div><div class="line"></div><div class="line">NS_ENUM 通过十进制整型判断；NS_OPTIONS通过二进制为运算判断。一般情况下我们的枚举类型用NS_ENUM就够了，但是在有些业务中判断包含某种选项，或者为了不同选项之间的组合，使用NS_OPTIONS可以完美解决。我们看下面的代码：</div></pre></td></tr></table></figure>
-<p>typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {<br>    SDWebImageRetryFailed = 1 &lt;&lt; 0, //0001<br>    SDWebImageLowPriority = 1 &lt;&lt; 1, //0010<br>    SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2, // 0100<br>    SDWebImageProgressiveDownload = 1 &lt;&lt; 3, //1000<br>};</p>
-<p>if(options &amp; SDWebImageRetryFailed){xxx1}<br>if(options &amp; SDWebImageLowPriority){xx1x}<br>if(options &amp; SDWebImageCacheMemoryOnly){x1xx}<br>if(options &amp; SDWebImageProgressiveDownload){1xxx}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">&gt; 2.objc_setAssociatedObject和objc_getAssociatedObject --&gt; RunTime</div><div class="line"></div><div class="line">这一对方法是运行时方法，作用是给对象动态添加关联对象，关联对象我们可以理解为运行时添加的属性，这个属性值的set和get方法即为这两个方法。因为category无法直接添加属性，而很多情况下我们需要使用category里面的属性，这时候我们可以通过关联对象的方式变相添加，例如下面：</div></pre></td></tr></table></figure>
-<p>static char loadOperationKey;</p>
-<p>@implementation UIView (WebCacheOperation)</p>
-<p>/<em>框架中的所有操作实际上都是通过一个 operationDictionary 来管理, 而这个字典实际上是动态的添加到 UIView 上的一个属性, 至于为什么添加到 UIView 上, 主要是因为这个  operationDictionary 需要在 UIButton 和 UIImageView 上重用, 所以需要添加到它们的根类上.</em>/</p>
-<ul>
-<li>(NSMutableDictionary <em>)operationDictionary {<br>  /</em> 获取关联对象<em>/<br>  /</em><br>   这个loadOperationKey 的定义是:static char loadOperationKey;<br>   它对应的绑定在UIView的属性是operationDictionary(NSMutableDictionary类型)<br>   operationDictionary的value是操作,key是针对不同类型视图和不同类型的操作设定的字符串<br>   注意:&amp;是一元运算符结果是右操作对象的地址(&amp;loadOperationKey返回static char loadOperationKey的地址)<br>   <em>/<br>  NSMutableDictionary </em>operations = objc_getAssociatedObject(self, &amp;loadOperationKey);<br>  //如果可以查到operations,就rerun,反之给视图绑定一个新的,空的operations字典<br>  if (operations) {<pre><code>return operations;
-</code></pre>  }<br>  operations = [NSMutableDictionary dictionary];<br>  /<em> 设置关联对象</em>/<br>  objc_setAssociatedObject(self, &amp;loadOperationKey, operations, OBJC_ASSOCIATION_RETAIN_NONATOMIC);<br>  return operations;<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">&gt; 3.dispatch_async和dispatch_sync --&gt; GCD</div><div class="line"></div><div class="line">这对方法都有两个参数(dispatch_queue_t queue, dispatch_block_t block)，一个队列和一个block；对于dispatch_async来说：他把block放到队列之中，之后立刻返回，继续往下执行。对于dispatch_sync来说：他把block放到队列之中，等待block执行完返回，之后才继续往下执行。</div><div class="line">作者：chen hao</div><div class="line">链接：https://www.zhihu.com/question/23436395/answer/26786289</div><div class="line">来源：知乎</div><div class="line">著作权归作者所有，转载请联系作者获得授权。</div><div class="line"></div><div class="line">看下实际的代码:</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>//to show the difference of dispatch_async and dispatch_sync<br>//串行队列<br>dispatch_queue_t _serialQueue = dispatch_queue_create(“com.example.name”, DISPATCH_QUEUE_SERIAL);</p>
-<p>//异步立刻返回.放打印放入到后台执行<br>dispatch_async(_serialQueue, ^{ NSLog(@”1”);});</p>
-<p>NSLog(@”2”);</p>
-<p>dispatch_async(_serialQueue, ^{ NSLog(@”3”);});<br>NSLog(@”4”);</p>
-<p>//同步等待block的代码执行完.放打印放入到后台执行<br>dispatch_sync(_serialQueue, ^{ NSLog(@”1”);});</p>
-<p>NSLog(@”2”);</p>
-<p>dispatch_sync(_serialQueue, ^{ NSLog(@”3”);});<br>NSLog(@”4”);</p>
-<p><code>``
-对于</code>dispatch_async<code>来说,把block提交到队列,立刻返回执行下一步.不等待block执行完毕.所以它的打印结果有很多中,譬如说</code>2413 或者 2143或者 1234<code>,但是1总在3前面.因为提交到的队列是</code>串行队列`,打印3总在打印1后执行. </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">   <span class="keyword">static</span> <span class="built_in">NSString</span> *MyIdentifier = <span class="string">@"MyIdentifier"</span>;</div><div class="line"></div><div class="line">   <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];</div><div class="line"></div><div class="line">   <span class="keyword">if</span> (cell == <span class="literal">nil</span>) &#123;</div><div class="line">       cell = [[[<span class="built_in">UITableViewCell</span> alloc] initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:MyIdentifier]</div><div class="line">                autorelease];</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">// Here we use the provided sd_setImageWithURL: method to load the web image</span></div><div class="line">   <span class="comment">// Ensure you use a placeholder image otherwise cells will be initialized with no image</span></div><div class="line">   [cell.imageView sd_setImageWithURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://example.com/image.jpg"</span>]</div><div class="line">                     placeholderImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"placeholder"</span>]];</div><div class="line"></div><div class="line">   cell.textLabel.text = <span class="string">@"My Text"</span>;</div><div class="line">   <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&gt;<br>ps： 第一次正式使用github发表文章，内容有点水，接下来会分几篇文章来分享SDWebimage开源库，主要从源码阅读、源码设计到的基础知识、涉及到的设计模式开发技巧等方面逐步分析。</p>
+<hr>
+<p>2017-07-13 晚</p>
+<p>看了几天源码，发现有很多基础知识不太清楚，觉得有必要在分析源码之前把涉及到的基础知识回顾总结一下：</p>
+<blockquote>
+<p>1.NS_ENUM和NS_OPTIONS</p>
+</blockquote>
+<p>NS_ENUM 通过十进制整型判断；NS_OPTIONS通过二进制为运算判断。一般情况下我们的枚举类型用NS_ENUM就够了，但是在有些业务中判断包含某种选项，或者为了不同选项之间的组合，使用NS_OPTIONS可以完美解决。我们看下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) &#123; </div><div class="line">    SDWebImageRetryFailed = 1 &lt;&lt; 0, //0001</div><div class="line">    SDWebImageLowPriority = 1 &lt;&lt; 1, //0010</div><div class="line">    SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2, // 0100</div><div class="line">    SDWebImageProgressiveDownload = 1 &lt;&lt; 3, //1000</div><div class="line">&#125;;</div><div class="line"></div><div class="line">if(options &amp; SDWebImageRetryFailed)&#123;xxx1&#125;</div><div class="line">if(options &amp; SDWebImageLowPriority)&#123;xx1x&#125;</div><div class="line">if(options &amp; SDWebImageCacheMemoryOnly)&#123;x1xx&#125;</div><div class="line">if(options &amp; SDWebImageProgressiveDownload)&#123;1xxx&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2.objc_setAssociatedObject和objc_getAssociatedObject –&gt; RunTime</p>
+</blockquote>
+<p>这一对方法是运行时方法，作用是给对象动态添加关联对象，关联对象我们可以理解为运行时添加的属性，这个属性值的set和get方法即为这两个方法。因为category无法直接添加属性，而很多情况下我们需要使用category里面的属性，这时候我们可以通过关联对象的方式变相添加，例如下面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">static char loadOperationKey;</div><div class="line"></div><div class="line">@implementation UIView (WebCacheOperation)</div><div class="line"></div><div class="line">/*框架中的所有操作实际上都是通过一个 operationDictionary 来管理, 而这个字典实际上是动态的添加到 UIView 上的一个属性, 至于为什么添加到 UIView 上, 主要是因为这个  operationDictionary 需要在 UIButton 和 UIImageView 上重用, 所以需要添加到它们的根类上.*/</div><div class="line"></div><div class="line">- (NSMutableDictionary *)operationDictionary &#123;</div><div class="line">    /* 获取关联对象*/</div><div class="line">    /*</div><div class="line">     这个loadOperationKey 的定义是:static char loadOperationKey;</div><div class="line">     它对应的绑定在UIView的属性是operationDictionary(NSMutableDictionary类型)</div><div class="line">     operationDictionary的value是操作,key是针对不同类型视图和不同类型的操作设定的字符串</div><div class="line">     注意:&amp;是一元运算符结果是右操作对象的地址(&amp;loadOperationKey返回static char loadOperationKey的地址)</div><div class="line">     */</div><div class="line">    NSMutableDictionary *operations = objc_getAssociatedObject(self, &amp;loadOperationKey);</div><div class="line">    //如果可以查到operations,就rerun,反之给视图绑定一个新的,空的operations字典</div><div class="line">    if (operations) &#123;</div><div class="line">        return operations;</div><div class="line">    &#125;</div><div class="line">    operations = [NSMutableDictionary dictionary];</div><div class="line">    /* 设置关联对象*/</div><div class="line">    objc_setAssociatedObject(self, &amp;loadOperationKey, operations, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">    return operations;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>3.dispatch_async和dispatch_sync –&gt; GCD</p>
+</blockquote>
+<p>这对方法都有两个参数(dispatch_queue_t queue, dispatch_block_t block)，一个队列和一个block；对于dispatch_async来说：他把block放到队列之中，之后立刻返回，继续往下执行。对于dispatch_sync来说：他把block放到队列之中，等待block执行完返回，之后才继续往下执行。</p>
+<p>看下实际的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//to show the difference of dispatch_async and dispatch_sync</div><div class="line">//串行队列</div><div class="line">dispatch_queue_t _serialQueue = dispatch_queue_create(&quot;com.example.name&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line"></div><div class="line">//异步立刻返回.放打印放入到后台执行</div><div class="line">dispatch_async(_serialQueue, ^&#123; NSLog(@&quot;1&quot;);&#125;);</div><div class="line"></div><div class="line">NSLog(@&quot;2&quot;);</div><div class="line"></div><div class="line">dispatch_async(_serialQueue, ^&#123; NSLog(@&quot;3&quot;);&#125;);</div><div class="line">NSLog(@&quot;4&quot;);</div><div class="line"></div><div class="line">//同步等待block的代码执行完.放打印放入到后台执行</div><div class="line">dispatch_sync(_serialQueue, ^&#123; NSLog(@&quot;1&quot;);&#125;);</div><div class="line"></div><div class="line">NSLog(@&quot;2&quot;);</div><div class="line"></div><div class="line">dispatch_sync(_serialQueue, ^&#123; NSLog(@&quot;3&quot;);&#125;);</div><div class="line">NSLog(@&quot;4&quot;);</div></pre></td></tr></table></figure>
+<p>对于<code>dispatch_async</code>来说,把block提交到队列,立刻返回执行下一步.不等待block执行完毕.所以它的打印结果有很多中,譬如说<code>2413 或者 2143或者 1234</code>,但是1总在3前面.因为提交到的队列是<code>串行队列</code>,打印3总在打印1后执行. </p>
 <p>对于<code>dispatch_sync</code>来说,把block提交到队列,不立刻返回,它等待提交到队列的block执行完毕才继续向下执行.所以其执行结果只有一种: 1234.无论你运行多少次都会是这一种结果. </p>
 <blockquote>
 <p>4.block</p>
@@ -310,14 +162,18 @@
 
       
     </div>
-    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="ciqvolutb0001lt5h5mk1wnx7" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
   
     
 <nav id="article-nav">
   
     <a href="/2016/07/12/SDWebImage源码分析-01/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           SDWebImage源码分析_01
@@ -327,8 +183,8 @@
   
   
     <a href="/2016/07/05/第一篇github博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">第一篇github博客</div>
-      <strong class="article-nav-caption">></strong>
     </a>
   
 </nav>
@@ -336,111 +192,85 @@
   
 </article>
 
+</section>
+        
+          <aside id="sidebar">
+  
+    
 
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-    <a class="jiathis_button_twitter"></a>
-    <a class="jiathis_button_plus"></a> 
-    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
+  
+    
 
-
-
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
 
 
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/12/SDWebImage源码分析-01/">SDWebImage源码分析_01</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/11/SDWebImage-简介/">SDWebImage 简介</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/05/第一篇github博客/">第一篇github博客</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/05/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="SDWebImage-简介" data-title="SDWebImage 简介" data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
+  
+</aside>
+        
+      </div>
       <footer id="footer">
+  
   <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 郑广阔
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+    <div id="footer-info" class="inner">
+      &copy; 2016 郑广阔<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
     </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
     
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
+<script src="/js/script.js"></script>
 
   </div>
 </body>
