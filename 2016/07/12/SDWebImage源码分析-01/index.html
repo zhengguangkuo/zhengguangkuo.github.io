@@ -15,7 +15,7 @@
 <meta property="og:description" content="今天我们正式进入源代码的分析，在上一章的简介中我们讲到这个框架主要以UIImageView和UIButton的category为入口，我们已UIImageView为例，逐行分一下一下整个加载流程。
 首先我们看一下UIImageView+WebCache.h这个入口类：首先这个类提供了下面这个枚举，代表了图片的加载方式，其中各个选项的含义注释写的很清楚，我们直接往下面看：
 1234567891011">
-<meta property="og:updated_time" content="2016-07-21T10:53:41.000Z">
+<meta property="og:updated_time" content="2016-07-21T11:02:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage源码分析_01">
 <meta name="twitter:description" content="今天我们正式进入源代码的分析，在上一章的简介中我们讲到这个框架主要以UIImageView和UIButton的category为入口，我们已UIImageView为例，逐行分一下一下整个加载流程。
@@ -64,7 +64,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -118,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="ciqw79xzq0000mn5h4by1i4sk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="ciqw7j6t50001o55hifckouvt" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -127,9 +127,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2016/07/22/SDWebImage源码分析_02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          SDWebImage源码分析_02
+        
+      </div>
+    </a>
+  
   
     <a href="/2016/07/11/SDWebImage-简介/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">SDWebImage 简介</div>
     </a>
   
@@ -152,7 +161,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
     </div>
@@ -162,9 +171,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/07/22/SDWebImage源码分析_02/">SDWebImage源码分析_02</a>
+          </li>
         
           <li>
             <a href="/2016/07/12/SDWebImage源码分析-01/">SDWebImage源码分析_01</a>
