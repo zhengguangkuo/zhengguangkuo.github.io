@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>NSCache初识 | 学无止境</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我们主要比较一下NSCache 与 NSMutableDictionary的区别
+现在demo的代码贴上，下面我们会围绕代码讲解
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSCache初识">
+<meta property="og:url" content="http://yoursite.com/2016/07/25/NSCache初识/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="我们主要比较一下NSCache 与 NSMutableDictionary的区别
+现在demo的代码贴上，下面我们会围绕代码讲解
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
+<meta property="og:updated_time" content="2016-07-25T12:09:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NSCache初识">
+<meta name="twitter:description" content="我们主要比较一下NSCache 与 NSMutableDictionary的区别
+现在demo的代码贴上，下面我们会围绕代码讲解
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717">
+  
+    <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">学无止境</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">蕴含文艺气息的程序猿</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-NSCache初识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/25/NSCache初识/" class="article-date">
+  <time datetime="2016-07-25T12:08:53.000Z" itemprop="datePublished">2016-07-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NSCache初识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="我们主要比较一下NSCache-与-NSMutableDictionary的区别"><a href="#我们主要比较一下NSCache-与-NSMutableDictionary的区别" class="headerlink" title="我们主要比较一下NSCache 与 NSMutableDictionary的区别"></a>我们主要比较一下NSCache 与 NSMutableDictionary的区别</h3><blockquote>
+<p>现在demo的代码贴上，下面我们会围绕代码讲解</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSCache</span> *cache;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableDictionary</span> *dictCache;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    </div><div class="line">    _cache = [[<span class="built_in">NSCache</span> alloc] init];</div><div class="line">    _dictCache = [[ <span class="built_in">NSMutableDictionary</span> alloc] init];</div><div class="line">    </div><div class="line">    </div><div class="line">    [<span class="keyword">self</span> writeCache];</div><div class="line">    [<span class="keyword">self</span> readCache];</div><div class="line">    [<span class="keyword">self</span> writeDictCache];</div><div class="line">    [<span class="keyword">self</span> readDictCache];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)writeCache</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSURL</span> *imageUrl = [[<span class="built_in">NSBundle</span> mainBundle] URLForResource:<span class="string">@"qqImage"</span> withExtension:<span class="string">@"png"</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSTimeInterval</span> timeInterval = [[<span class="built_in">NSDate</span> date] timeIntervalSince1970];</div><div class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfURL:imageUrl];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>,count = <span class="number">1000</span>; i &lt; count; i++)</div><div class="line">    &#123;</div><div class="line">        [_cache setObject:data forKey:@(i)];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"cache write time : %f"</span>,([[<span class="built_in">NSDate</span> date] timeIntervalSince1970] - timeInterval));</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)readCache</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSTimeInterval</span> timeInterval = [[<span class="built_in">NSDate</span> date] timeIntervalSince1970];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>,count = <span class="number">1000</span>; i &lt; count; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSData</span> *data = [_cache objectForKey:@(i)];</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (i % <span class="number">333</span> == <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"data index and length : %@ and %lu"</span>,@(i) ,data.length);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"cache read time : %f"</span>,([[<span class="built_in">NSDate</span> date] timeIntervalSince1970] - timeInterval));</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)writeDictCache</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSURL</span> *imageUrl = [[<span class="built_in">NSBundle</span> mainBundle] URLForResource:<span class="string">@"qqImage"</span> withExtension:<span class="string">@"png"</span>];</div><div class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfURL:imageUrl];</div><div class="line">    <span class="built_in">NSTimeInterval</span> timeInterval = [[<span class="built_in">NSDate</span> date] timeIntervalSince1970];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>,count = <span class="number">1000</span>; i &lt; count; i++)</div><div class="line">    &#123;</div><div class="line">        [_dictCache setObject:data forKey:@(i)];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"dictinary write time : %f"</span>,([[<span class="built_in">NSDate</span> date] timeIntervalSince1970] - timeInterval));</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)readDictCache</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSTimeInterval</span> timeInterval = [[<span class="built_in">NSDate</span> date] timeIntervalSince1970];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>,count = <span class="number">1000</span>; i &lt; count; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSData</span> *data = [_dictCache objectForKey:@(i)];</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (i % <span class="number">333</span> == <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"dictionary data index and length : %@ and %lu"</span>,@(i) ,data.length);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"dictionary read time : %f"</span>,([[<span class="built_in">NSDate</span> date] timeIntervalSince1970] - timeInterval));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1-比较两者的读写速度：我们用我们用模拟器（不会内存警告）运行一下："><a href="#1-比较两者的读写速度：我们用我们用模拟器（不会内存警告）运行一下：" class="headerlink" title="1.比较两者的读写速度：我们用我们用模拟器（不会内存警告）运行一下："></a>1.比较两者的读写速度：我们用我们用模拟器（不会内存警告）运行一下：</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.934</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] dictinary write time : <span class="number">0.000213</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.935</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] dictionary data index and length : <span class="number">0</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.935</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] dictionary data index and length : <span class="number">333</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.935</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] dictionary data index and length : <span class="number">666</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.935</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] dictionary data index and length : <span class="number">999</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.935</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] dictionary read time : <span class="number">0.000700</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.937</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] cache write time : <span class="number">0.001076</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.937</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] data index and length : <span class="number">0</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.937</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] data index and length : <span class="number">333</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.937</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] data index and length : <span class="number">666</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.937</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] data index and length : <span class="number">999</span> and <span class="number">477598</span></div><div class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-25</span> <span class="number">17</span>:<span class="number">57</span>:<span class="number">48.937</span> TestFirstObject[<span class="number">13431</span>:<span class="number">340406</span>] cache read time : <span class="number">0.000789</span></div></pre></td></tr></table></figure>
+<p>通过打印日志我们看到无所写入速度还是读取速度，nsmutabledictionary 比 nscache稍快一点，不过对比477598bytes的data写入1000次才有毫秒级的差距来看，速度相差几乎何以忽略。</p>
+<h3 id="2-NSCache-具有自动清除功能。"><a href="#2-NSCache-具有自动清除功能。" class="headerlink" title="2.NSCache 具有自动清除功能。"></a>2.NSCache 具有自动清除功能。</h3><p>当我们在真机上执行的时候，如下代码，写入1000次data<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>,count = <span class="number">1000</span>; i &lt; count; i++)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfURL:imageUrl];</div><div class="line">    [_cache setObject:data forKey:@(i)];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于数据的庞大，执行这块代码之后，系统会发出内存警告，这时会调用<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"**** %@ *****"</span>,<span class="built_in">NSStringFromSelector</span>(_cmd));</div><div class="line">    </div><div class="line">    [<span class="keyword">self</span> readCache];</div><div class="line">    [<span class="keyword">self</span> readDictCache];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当接收到内存警告之后，再次readCache会发现_cache里面缓存的数据都被清除了，而_dictCache里面的数据则没有被清除掉。</p>
+<h3 id="3-NSCache是线程安全的，而NSMutableDcitionary等可变容器是线程不安全的。"><a href="#3-NSCache是线程安全的，而NSMutableDcitionary等可变容器是线程不安全的。" class="headerlink" title="3.NSCache是线程安全的，而NSMutableDcitionary等可变容器是线程不安全的。"></a>3.NSCache是线程安全的，而NSMutableDcitionary等可变容器是线程不安全的。</h3><h3 id="4-NSCache的key不需要copy，NSMutableDcitionary的key需要实现NSCopying协议。"><a href="#4-NSCache的key不需要copy，NSMutableDcitionary的key需要实现NSCopying协议。" class="headerlink" title="4.NSCache的key不需要copy，NSMutableDcitionary的key需要实现NSCopying协议。"></a>4.NSCache的key不需要copy，NSMutableDcitionary的key需要实现NSCopying协议。</h3><h3 id="5-void-setObject-ObjectType-obj-forKey-KeyType-key-cost-NSUInteger-g"><a href="#5-void-setObject-ObjectType-obj-forKey-KeyType-key-cost-NSUInteger-g" class="headerlink" title="5.- (void)setObject:(ObjectType)obj forKey:(KeyType)key cost:(NSUInteger)g;"></a>5.- (void)setObject:(ObjectType)obj forKey:(KeyType)key cost:(NSUInteger)g;</h3><p>cost是缓存成本，比如SDWebimage框架计算cost值<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">FOUNDATION_STATIC_INLINE <span class="built_in">NSUInteger</span> SDCacheCostForImage(<span class="built_in">UIImage</span> *image) &#123;</div><div class="line">    <span class="keyword">return</span> image.size.height * image.size.width * image.scale * image.scale;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然而我们最好不要这么用，我在demo中尝试使用这个方法，发现并没有卵用<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)writeCache</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSURL</span> *imageUrl = [[<span class="built_in">NSBundle</span> mainBundle] URLForResource:<span class="string">@"qqImage"</span> withExtension:<span class="string">@"png"</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSTimeInterval</span> timeInterval = [[<span class="built_in">NSDate</span> date] timeIntervalSince1970];</div><div class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfURL:imageUrl];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>,count = <span class="number">1000</span>; i &lt; count; i++)</div><div class="line">    &#123;</div><div class="line">        [_cache setObject:data forKey:@(i) cost:<span class="number">5</span>];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"cache write time : %f"</span>,([[<span class="built_in">NSDate</span> date] timeIntervalSince1970] - timeInterval));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cir1zqqne00017p5h8l5wytde" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/22/SDWebImage源码分析_02/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SDWebImage源码分析_02</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/25/NSCache初识/">NSCache初识</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/SDWebImage源码分析_02/">SDWebImage源码分析_02</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/SDWebImage源码分析-01/">SDWebImage源码分析_01</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/11/SDWebImage-简介/">SDWebImage 简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 郑广阔<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
