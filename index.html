@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -67,6 +67,69 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-iOS多线程概念" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/05/iOS多线程概念/" class="article-date">
+  <time datetime="2016-08-05T03:26:30.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/iOS多线程概念/">iOS多线程概念</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>基础概念</p>
+<blockquote>
+<p>多线程的运行原理并不是多个线程同时执行，而是CPU高速切换执行的线程，通俗的说就是一边聊天一边吃水果，说和吃这两个动作都是由嘴发出来（cpu），但是并不是同时的，而是说几句话，然后吃几口水果，然后再说几句话，就这样子，貌似边说边吃，实际也是需要排队执行。</p>
+</blockquote>
+<ol>
+<li>进程：一个运行中的应用程序就是一个进程，每个进程之间相互独立，运行在其专有的受保护的内存空间，另外现在我们讲的cpu单核和多核跟进程没有关系，一个运行的程序无论在单核中还是多核中都是一个进程。</li>
+<li>线程：程序执行的最小单元，线程是进程中的一个实体，每个进程至少有一个线程，并且进程里面的所有任务都是在线程中执行。</li>
+<li>同步：线程按顺序执行，一个完了才执行下一个。</li>
+<li>异步：可以在当前线程开启多个线程同时进行，不按顺序执行。</li>
+<li>队列：执行线程的队伍结构</li>
+<li>并发队列：同时开启多个线程，执行任务，并发队列需要使用异步函数</li>
+<li>串行队列：一个线程，顺序执行任务</li>
+</ol>
+<p>实现方案</p>
+<ol>
+<li>NSThread  —  NSRunloop</li>
+<li>GCD  —  Block</li>
+<li>NSOperation  —  NSOperationQueue</li>
+</ol>
+<p>优缺点<br>优点：</p>
+<ol>
+<li>能适当提高程序的执行效率</li>
+<li>能适当提高资源（cpu，内存）利用率<br>缺点</li>
+<li>创建线程是有开销的，iOS下的主要成本：内核数据结构大约1k，栈空间，创建时间，如果开启大量线程会降低程序的性能。</li>
+<li>线程越多cpu在调度上的开销越大</li>
+<li>程序设计变得复杂，如线程间通信，多线程的数据共享等。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/05/iOS多线程概念/" data-id="cirh6zh8o0003e05hs68l22ei" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-NSCache初识" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -105,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cir1zqqne00017p5h8l5wytde" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cirh6zh8m0002e05hwypto6ns" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -154,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/22/SDWebImage源码分析_02/" data-id="cir1zqqns00067p5hnr60yutb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/22/SDWebImage源码分析_02/" data-id="cirh6zh8u0006e05h5lluqz4n" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -199,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/22/hello-world/" data-id="cir1zqqnm00047p5h23akitjl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/22/hello-world/" data-id="cirh6zh8s0005e05hucn5sexd" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -254,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="cir1zqqnl00037p5hf23jkgck" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="cirh6zh8o0004e05h798lapud" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -327,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="cir1zqqnk00027p5hwymdbolh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="cirh6zh8e0001e05hmlefv40u" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -363,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="cir1zqqnq00057p5h1eukgt7s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="cirh6zh8w0007e05h5upaahzj" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -390,7 +453,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
     </div>
   </div>
 
@@ -398,9 +461,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/05/iOS多线程概念/">iOS多线程概念</a>
+          </li>
         
           <li>
             <a href="/2016/07/25/NSCache初识/">NSCache初识</a>
@@ -418,10 +485,6 @@
             <a href="/2016/07/12/SDWebImage源码分析-01/">SDWebImage源码分析_01</a>
           </li>
         
-          <li>
-            <a href="/2016/07/11/SDWebImage-简介/">SDWebImage 简介</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -435,7 +498,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 郑广阔<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
