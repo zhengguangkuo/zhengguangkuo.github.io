@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -67,6 +67,112 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-关于NSRunloop你需要了解的" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/05/关于NSRunloop你需要了解的/" class="article-date">
+  <time datetime="2016-08-05T06:14:26.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/关于NSRunloop你需要了解的/">关于NSRunloop你需要了解的</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是runloop"><a href="#什么是runloop" class="headerlink" title="什么是runloop"></a>什么是runloop</h3><blockquote>
+<p>runloop顾名思义运行循环</p>
+</blockquote>
+<p>NSRunLoop 是对CFRunloop的封装，而CFRunloop是开源的，我们看源代码可以发现，runloop实际上是do…while（）结构</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> <span class="built_in">CFRunLoopRun</span>(<span class="keyword">void</span>) &#123;	<span class="comment">/* DOES CALLOUT */</span></div><div class="line">    int32_t result;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        result = <span class="built_in">CFRunLoopRunSpecific</span>(<span class="built_in">CFRunLoopGetCurrent</span>(), kCFRunLoopDefaultMode, <span class="number">1.0e10</span>, <span class="literal">false</span>);</div><div class="line">        CHECK_FOR_FORK();</div><div class="line">    &#125; <span class="keyword">while</span> (kCFRunLoopRunStopped != result &amp;&amp; kCFRunLoopRunFinished != result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种模型通常被称作 Event Loop。 Event Loop 在很多系统和框架里都有实现，比如 Node.js 的事件处理，比如 Windows 程序的消息循环，再比如 OSX/iOS 里的 RunLoop。实现这种模型的关键点在于：如何管理事件/消息，如何让线程在没有处理消息时休眠以避免资源占用、在有消息到来时立刻被唤醒。</p>
+<p>所以，RunLoop 实际上就是一个对象，这个对象管理了其需要处理的事件和消息，并提供了一个入口函数来执行上面 Event Loop 的逻辑。线程执行了这个函数后，就会一直处于这个函数内部 “接受消息-&gt;等待-&gt;处理” 的循环中，直到这个循环结束（比如传入 quit 的消息），函数返回。</p>
+<p>OSX/iOS 系统中，提供了两个这样的对象：NSRunLoop 和 CFRunLoopRef。<br>CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。<br>NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。</p>
+<h6 id="大概有如下几个作用："><a href="#大概有如下几个作用：" class="headerlink" title="大概有如下几个作用："></a>大概有如下几个作用：</h6><ol>
+<li>保持程序的持续运行</li>
+<li>处理App中的各种事件（比如触摸事件、定时器事件、Selector事件）</li>
+<li>节省CPU资源，提高程序性能：该做事时做事，该休息时休息</li>
+</ol>
+<p>我们打开一个app，不管你用不用，app都不会死（除非人为杀死或者被系统杀死），但是只要你一点击或者触摸，app马上就能够响应你的操作，这就是runloop在背后起作用。</p>
+<hr>
+<h3 id="runloop-与-线程的关系"><a href="#runloop-与-线程的关系" class="headerlink" title="runloop 与 线程的关系"></a>runloop 与 线程的关系</h3><p>runloop 与 线程是一一对应的，其关系是保存在一个全局的 Dictionary里。线程刚创建时并没有RunLoop，如果你不主动获取，那它一直都不会有。RunLoop 的创建是发生在第一次获取时，RunLoop 的销毁是发生在线程结束时。你只能在一个线程的内部获取其 RunLoop（主线程除外）。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="built_in">CFMutableDictionaryRef</span> __CFRunLoops = <span class="literal">NULL</span>;</div><div class="line"><span class="keyword">static</span> <span class="built_in">CFSpinLock_t</span> loopsLock = <span class="built_in">CFSpinLockInit</span>;</div><div class="line"></div><div class="line"><span class="comment">// should only be called by Foundation</span></div><div class="line"><span class="comment">// t==0 is a synonym for "main thread" that always works</span></div><div class="line"><span class="built_in">CF_EXPORT</span> <span class="built_in">CFRunLoopRef</span> _CFRunLoopGet0(pthread_t t) &#123;</div><div class="line">    <span class="keyword">if</span> (pthread_equal(t, kNilPthreadT)) &#123;</div><div class="line">	t = pthread_main_thread_np();</div><div class="line">    &#125;</div><div class="line">    __CFSpinLock(&amp;loopsLock);</div><div class="line">    <span class="keyword">if</span> (!__CFRunLoops) &#123;</div><div class="line">        __CFSpinUnlock(&amp;loopsLock);</div><div class="line">	<span class="built_in">CFMutableDictionaryRef</span> dict = <span class="built_in">CFDictionaryCreateMutable</span>(kCFAllocatorSystemDefault, <span class="number">0</span>, <span class="literal">NULL</span>, &amp;kCFTypeDictionaryValueCallBacks);</div><div class="line">	<span class="built_in">CFRunLoopRef</span> mainLoop = __CFRunLoopCreate(pthread_main_thread_np());</div><div class="line">	<span class="built_in">CFDictionarySetValue</span>(dict, pthreadPointer(pthread_main_thread_np()), mainLoop);</div><div class="line">	<span class="keyword">if</span> (!OSAtomicCompareAndSwapPtrBarrier(<span class="literal">NULL</span>, dict, (<span class="keyword">void</span> * <span class="keyword">volatile</span> *)&amp;__CFRunLoops)) &#123;</div><div class="line">	    <span class="built_in">CFRelease</span>(dict);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">CFRelease</span>(mainLoop);</div><div class="line">        __CFSpinLock(&amp;loopsLock);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">CFRunLoopRef</span> loop = (<span class="built_in">CFRunLoopRef</span>)<span class="built_in">CFDictionaryGetValue</span>(__CFRunLoops, pthreadPointer(t));</div><div class="line">    __CFSpinUnlock(&amp;loopsLock);</div><div class="line">    <span class="keyword">if</span> (!loop) &#123;</div><div class="line">	<span class="built_in">CFRunLoopRef</span> newLoop = __CFRunLoopCreate(t);</div><div class="line">        __CFSpinLock(&amp;loopsLock);</div><div class="line">	loop = (<span class="built_in">CFRunLoopRef</span>)<span class="built_in">CFDictionaryGetValue</span>(__CFRunLoops, pthreadPointer(t));</div><div class="line">	<span class="keyword">if</span> (!loop) &#123;</div><div class="line">	    <span class="built_in">CFDictionarySetValue</span>(__CFRunLoops, pthreadPointer(t), newLoop);</div><div class="line">	    loop = newLoop;</div><div class="line">	&#125;</div><div class="line">        <span class="comment">// don't release run loops inside the loopsLock, because CFRunLoopDeallocate may end up taking it</span></div><div class="line">        __CFSpinUnlock(&amp;loopsLock);</div><div class="line">	<span class="built_in">CFRelease</span>(newLoop);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (pthread_equal(t, pthread_self())) &#123;</div><div class="line">        _CFSetTSD(__CFTSDKeyRunLoop, (<span class="keyword">void</span> *)loop, <span class="literal">NULL</span>);</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> == _CFGetTSD(__CFTSDKeyRunLoopCntr)) &#123;</div><div class="line">            _CFSetTSD(__CFTSDKeyRunLoopCntr, (<span class="keyword">void</span> *)(PTHREAD_DESTRUCTOR_ITERATIONS<span class="number">-1</span>), (<span class="keyword">void</span> (*)(<span class="keyword">void</span> *))__CFFinalizeRunLoop);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> loop;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>系统的主线程启动的时候回自动创建runloop并运行，这也是我们启动一个程序什么都不做能一直运行的原因。但是我们创建子线程的时候需要手动创建runloop，不会自动为我们创建。然而NSRunloop并没有提供创建runloop实例的方法而是提供了两个获取runloop的方法<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSRunLoop</span> *)currentRunLoop;</div><div class="line">+ (<span class="built_in">NSRunLoop</span> *)mainRunLoop <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_5, <span class="number">2</span>_0);</div></pre></td></tr></table></figure></p>
+<p>在线程中第一次调用获取runloop的方法时，会自动帮我们创建runloop实例，这个从上面的实现源码中也能看出来。</p>
+<p>我们来看一下，这张经典的图：<br> <img src="https://raw.githubusercontent.com/zhengguangkuo/image/master/runloop01.jpg" alt="image"></p>
+<hr>
+<h3 id="runloop-管理autoreleasePool"><a href="#runloop-管理autoreleasePool" class="headerlink" title="runloop 管理autoreleasePool"></a>runloop 管理autoreleasePool</h3><p>在没有手加Autorelease Pool的情况下，Autorelease对象是在当前的runloop迭代结束时释放的，而它能够释放的原因是系统在每个runloop迭代中都加入了自动释放池Push和Pop。</p>
+<p>####### 自动释放池的创建和释放，销毁的时机如下所示</p>
+<ul>
+<li>kCFRunLoopEntry; // 进入runloop之前，创建一个自动释放池</li>
+<li>kCFRunLoopBeforeWaiting; // 休眠之前，销毁自动释放池，创建一个新的自动释放池</li>
+<li>kCFRunLoopExit; // 退出runloop之前，销毁自动释放池</li>
+</ul>
+<hr>
+<h3 id="runloop的相关类"><a href="#runloop的相关类" class="headerlink" title="runloop的相关类"></a>runloop的相关类</h3><p>runloop一共有五个类</p>
+<ol>
+<li>CFRunLoopRef</li>
+<li>CFRunLoopModeRef</li>
+<li>CFRunLoopSourceRef</li>
+<li>CFRunLoopTimerRef</li>
+<li>CFRunLoopObserverRef</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhengguangkuo/image/master/RunLoop_3.png" alt="image"></p>
+<p>上面这个图形象的说明了这几个类的关系，下面我们看一下这几类都是干什么的：</p>
+<h6 id="CFRunLoopSourceRef"><a href="#CFRunLoopSourceRef" class="headerlink" title="CFRunLoopSourceRef"></a>CFRunLoopSourceRef</h6><p>CFRunLoopSourceRef是事件源（输入源），比如外部的触摸，点击事件和系统内部进程间的通信等。</p>
+<p>按照官方文档，Source的分类：</p>
+<ul>
+<li>Port-Based Sources</li>
+<li>Custom Input Sources</li>
+<li>Cocoa Perform Selector Sources</li>
+</ul>
+<p>按照函数调用栈，Source的分类：</p>
+<ul>
+<li>Source0：非基于Port的。只包含了一个回调（函数指针），它并不能主动触发事件。使用时，你需要先调用 CFRunLoopSourceSignal(source)，将这个 Source 标记为待处理，然后手动调用 CFRunLoopWakeUp(runloop) 来唤醒 RunLoop，让其处理这个事件。</li>
+<li>Source1：基于Port的，通过内核和其他线程通信，接收、分发系统事件。这种 Source 能主动唤醒 RunLoop 的线程。后面讲到的创建常驻线程就是在线程中添加一个NSport来实现的。</li>
+</ul>
+<h6 id="CFRunLoopTimerRef类"><a href="#CFRunLoopTimerRef类" class="headerlink" title="CFRunLoopTimerRef类"></a>CFRunLoopTimerRef类</h6><ul>
+<li>CFRunLoopTimerRef是基于时间的触发器</li>
+<li>CFRunLoopTimerRef基本上说的就是NSTimer，它受RunLoop的Mode影响</li>
+<li>GCD的定时器不受RunLoop的Mode影响</li>
+<li>当其加入到 RunLoop 时，RunLoop会注册对应的时间点，当时间点到时，RunLoop会被唤醒以执行那个回调</li>
+</ul>
+<h6 id="CFRunLoopModeRef"><a href="#CFRunLoopModeRef" class="headerlink" title="CFRunLoopModeRef"></a>CFRunLoopModeRef</h6><p>从上图可以看到一个runloop可以包含多个model，每个model都是独立的，而且runloop只能选择一个model运行，也就是currentModel。如果需要切换 Mode，只能退出 Loop，再重新指定一个 Mode 进入。这样做主要是为了分隔开不同组的 Source/Timer/Observer，让其互不影响。</p>
+<p>系统默认注册了5个Mode:</p>
+<p>NSDefaultRunLoopMode：App的默认Mode，通常主线程是在这个Mode下运行</p>
+<p>UITrackingRunLoopMode：界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响</p>
+<p>UIInitializationRunLoopMode: 在刚启动 App 时第进入的第一个 Mode，启动完成后就不再使用</p>
+<p>GSEventReceiveRunLoopMode: 接受系统事件的内部 Mode，通常用不到</p>
+<p>NSRunLoopCommonModes: 这是一个占位用的Mode，不是一种真正的Mode</p>
+<p>这里重点说一下最后一个commonmodel</p>
+<p>一个 Mode 可以将自己标记为”Common”属性（通过将其 ModeName 添加到 RunLoop 的 “commonModes” 中）。每当 RunLoop 的内容发生变化时，RunLoop 都会自动将 _commonModeItems 里的 Source/Observer/Timer 同步到具有 “Common” 标记的所有Mode里。</p>
+<p>应用场景举例：主线程的 RunLoop 里有两个预置的 Mode：kCFRunLoopDefaultMode 和 UITrackingRunLoopMode。这两个 Mode 都已经被标记为”Common”属性。DefaultMode 是 App 平时所处的状态，TrackingRunLoopMode 是追踪 ScrollView 滑动时的状态。当你创建一个 Timer 并加到 DefaultMode 时，Timer 会得到重复回调，但此时滑动一个TableView时，RunLoop 会将 mode 切换为 TrackingRunLoopMode，这时 Timer 就不会被回调，并且也不会影响到滑动操作。</p>
+<p>有时你需要一个 Timer，在两个 Mode 中都能得到回调，一种办法就是将这个 Timer 分别加入这两个 Mode。还有一种方式，就是将 Timer 加入到commonMode 中。那么所有被标记为commonMode的mode（defaultMode和TrackingMode）都会执行该timer。这样你在滑动界面的时候也能够调用timer，下面会有实例讲解。</p>
+<h3 id="runloop的生命周期"><a href="#runloop的生命周期" class="headerlink" title="runloop的生命周期"></a>runloop的生命周期</h3><p>下面两张图，一张是文字描述，一张是图形描述<br><img src="https://raw.githubusercontent.com/zhengguangkuo/image/master/runloop02.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/zhengguangkuo/image/master/runloop04.png" alt="image"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/05/关于NSRunloop你需要了解的/" data-id="cirhcxvfr0003tn5hvpzi56ou" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-iOS多线程概念" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -121,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/iOS多线程概念/" data-id="cirh6zh8o0003e05hs68l22ei" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/08/05/iOS多线程概念/" data-id="cirhcxvfq0002tn5hbpvo2x5l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cirh6zh8m0002e05hwypto6ns" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cirhcxvff0000tn5hdj2u6wkr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/22/SDWebImage源码分析_02/" data-id="cirh6zh8u0006e05h5lluqz4n" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/07/22/SDWebImage源码分析_02/" data-id="cirhcxvfz0006tn5hex3c1ftf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/22/hello-world/" data-id="cirh6zh8s0005e05hucn5sexd" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/07/22/hello-world/" data-id="cirhcxvfx0005tn5hcbm8lnd7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="cirh6zh8o0004e05h798lapud" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="cirhcxvft0004tn5hc4y9q63c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="cirh6zh8e0001e05hmlefv40u" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="cirhcxvfl0001tn5hb76w47rp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -426,7 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="cirh6zh8w0007e05h5upaahzj" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="cirhcxvg00007tn5hx1j2sbgv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -461,9 +567,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/05/关于NSRunloop你需要了解的/">关于NSRunloop你需要了解的</a>
+          </li>
         
           <li>
             <a href="/2016/08/05/iOS多线程概念/">iOS多线程概念</a>
@@ -481,10 +591,6 @@
             <a href="/2016/07/22/hello-world/">Hello World</a>
           </li>
         
-          <li>
-            <a href="/2016/07/12/SDWebImage源码分析-01/">SDWebImage源码分析_01</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -498,7 +604,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 郑广阔<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
