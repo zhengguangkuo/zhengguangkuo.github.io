@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -164,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/关于NSRunloop你需要了解的/" data-id="cirhcxvfr0003tn5hvpzi56ou" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/05/关于NSRunloop你需要了解的/" data-id="cirmum88s0006t15h1ma5tkdy" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -196,8 +196,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>基础概念</p>
-<blockquote>
+        <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><blockquote>
 <p>多线程的运行原理并不是多个线程同时执行，而是CPU高速切换执行的线程，通俗的说就是一边聊天一边吃水果，说和吃这两个动作都是由嘴发出来（cpu），但是并不是同时的，而是说几句话，然后吃几口水果，然后再说几句话，就这样子，貌似边说边吃，实际也是需要排队执行。</p>
 </blockquote>
 <ol>
@@ -209,13 +208,27 @@
 <li>并发队列：同时开启多个线程，执行任务，并发队列需要使用异步函数</li>
 <li>串行队列：一个线程，顺序执行任务</li>
 </ol>
-<p>实现方案</p>
-<ol>
+<p>组合使用起来是这样的：</p>
+<h4 id="同步串行："><a href="#同步串行：" class="headerlink" title="同步串行："></a>同步串行：</h4><p>在当前线程中串行队列中添加任务，这里需要注意主线程中的住队列调用会发成死锁，例如下面的代码</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)testGCD:(<span class="keyword">id</span>)sender</div><div class="line">&#123;</div><div class="line">    <span class="built_in">dispatch_sync</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程主队列中添加任务"</span>);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"测试添加队列之后"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面看一张图说明一下为什么死锁：<br><img src="https://raw.githubusercontent.com/zhengguangkuo/image/master/%E4%B8%BB%E9%98%9F%E5%88%97%E6%AD%BB%E9%94%81.png" alt="image"></p>
+<p>如图，假设任务a（testGCD：） 在主线程主队列中执行，然后在a任务中通过方法dispatch_sync，往主队列里面插入任务b，因为同步，所以任务a被截断，需要等待任务b执行完才能据需执行。然而任务b加在了主队列里面（串行），任务b需要任务a执行完才能开始，这样便卡住了，无法往下面执行，造成死锁。</p>
+<p>下面代码，为任务b单独创建一个队里，执行任务b的时候无需等待任务a执行完，这样便不会发生死锁问题。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_sync</span>(dispatch_queue_create(<span class="string">"com.zgk.queue.test"</span>, <span class="literal">nil</span>), ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务"</span>);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"测试添加队列之后"</span>);</div></pre></td></tr></table></figure>
+<h4 id="同步并发"><a href="#同步并发" class="headerlink" title="同步并发"></a>同步并发</h4><p>同步优先级比并发要高，也就是说同步下使用并发队列然并卵，任务会一个一个的顺序执行.比如下面的代码，创建一个并发队列，添加两个任务，任务会顺序执行 b–&gt; c —&gt; a</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> queuen = dispatch_queue_create(<span class="string">"com.zgk.queue.test"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_sync</span>(queuen, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务_b"</span>);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_sync</span>(queuen, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务_c"</span>);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"测试添加队列之后_a"</span>);</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">01</span>:<span class="number">03.046</span> zgkMultiThread[<span class="number">7390</span>:<span class="number">543437</span>] 主线程自定义队列中添加任务_b</div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">01</span>:<span class="number">08.203</span> zgkMultiThread[<span class="number">7390</span>:<span class="number">543437</span>] 主线程自定义队列中添加任务_c</div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">01</span>:<span class="number">08.203</span> zgkMultiThread[<span class="number">7390</span>:<span class="number">543437</span>] 测试添加队列之后_a</div></pre></td></tr></table></figure>
+<h4 id="异步串行"><a href="#异步串行" class="headerlink" title="异步串行"></a>异步串行</h4><p>这里会为队列开启一个并且只有一个新的线程，然后将所有任务加到该队列中，一个一个的按顺序执行</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)testGCD:(<span class="keyword">id</span>)sender</div><div class="line">&#123;</div><div class="line">    <span class="built_in">dispatch_queue_t</span> queuen = dispatch_queue_create(<span class="string">"com.zgk.queue.test"</span>, <span class="literal">nil</span>);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_async</span>(queuen, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务_b thread: %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_async</span>(queuen, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务_c thread: %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"测试添加队列之后_a thread: %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">21</span>:<span class="number">07.515</span> zgkMultiThread[<span class="number">7461</span>:<span class="number">556898</span>] 主线程自定义队列中添加任务_b thread: &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fce325262b0</span>&gt;&#123;number = <span class="number">2</span>, name = (null)&#125;</div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">21</span>:<span class="number">07.515</span> zgkMultiThread[<span class="number">7461</span>:<span class="number">556690</span>] 测试添加队列之后_a thread: &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fce339010e0</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">21</span>:<span class="number">09.339</span> zgkMultiThread[<span class="number">7461</span>:<span class="number">556898</span>] 主线程自定义队列中添加任务_c thread: &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fce325262b0</span>&gt;&#123;number = <span class="number">2</span>, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>执行代码发现，任务b，c异步添加到串行队列中，只开启了一个线程<nsthread: 0x7fce325262b0="">{number = 2, name = (null)}。</nsthread:></p>
+<h4 id="异步并发"><a href="#异步并发" class="headerlink" title="异步并发"></a>异步并发</h4><p>为并发队列开启多个线程，同时执行任务，这里需要注意，线程数量并不是无限的，会根据队列管理线程个数。将上面的串行队列改成并发队列</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)testGCD:(<span class="keyword">id</span>)sender</div><div class="line">&#123;</div><div class="line">    <span class="built_in">dispatch_queue_t</span> queuen = dispatch_queue_create(<span class="string">"com.zgk.queue.test"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_async</span>(queuen, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务_b thread: %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_async</span>(queuen, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"主线程自定义队列中添加任务_c thread: %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"测试添加队列之后_a thread: %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">25</span>:<span class="number">17.283</span> zgkMultiThread[<span class="number">7488</span>:<span class="number">560232</span>] 测试添加队列之后_a thread: &lt;<span class="built_in">NSThread</span>: <span class="number">0x7ff0f9d04f20</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">25</span>:<span class="number">17.283</span> zgkMultiThread[<span class="number">7488</span>:<span class="number">560273</span>] 主线程自定义队列中添加任务_b thread: &lt;<span class="built_in">NSThread</span>: <span class="number">0x7ff0fc101430</span>&gt;&#123;number = <span class="number">2</span>, name = (null)&#125;</div><div class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-09</span> <span class="number">10</span>:<span class="number">25</span>:<span class="number">17.283</span> zgkMultiThread[<span class="number">7488</span>:<span class="number">560782</span>] 主线程自定义队列中添加任务_c thread: &lt;<span class="built_in">NSThread</span>: <span class="number">0x7ff0fc101470</span>&gt;&#123;number = <span class="number">3</span>, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>通过log我们开到每个任务都是开启了一个新的线程。</p>
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><ol>
 <li>NSThread  —  NSRunloop</li>
 <li>GCD  —  Block</li>
 <li>NSOperation  —  NSOperationQueue</li>
 </ol>
-<p>优缺点<br>优点：</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
 <ol>
 <li>能适当提高程序的执行效率</li>
 <li>能适当提高资源（cpu，内存）利用率<br>缺点</li>
@@ -227,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/iOS多线程概念/" data-id="cirhcxvfq0002tn5hbpvo2x5l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/05/iOS多线程概念/" data-id="cirmum88l0003t15hiiqesf24" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -274,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cirhcxvff0000tn5hdj2u6wkr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/25/NSCache初识/" data-id="cirmum88f0001t15hc6ogx7cu" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -323,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/22/SDWebImage源码分析_02/" data-id="cirhcxvfz0006tn5hex3c1ftf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/22/SDWebImage源码分析_02/" data-id="cirmum88v0008t15hkekxjpng" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -368,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/22/hello-world/" data-id="cirhcxvfx0005tn5hcbm8lnd7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/22/hello-world/" data-id="cirmum88q0005t15hewlf74u1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -423,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="cirhcxvft0004tn5hc4y9q63c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/12/SDWebImage源码分析-01/" data-id="cirmum88m0004t15hprqnqdcu" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -496,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="cirhcxvfl0001tn5hb76w47rp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/11/SDWebImage-简介/" data-id="cirmum88k0002t15hr3owxb7m" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -532,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="cirhcxvg00007tn5hx1j2sbgv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/05/第一篇github博客/" data-id="cirmum88u0007t15hkug0brby" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -567,7 +580,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -604,7 +617,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 郑广阔<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
